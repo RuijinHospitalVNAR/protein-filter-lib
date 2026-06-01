@@ -1,0 +1,11 @@
+source leaprc.protein.{{FORCEFIELD}}
+{{DISULFIDE_PARAM}}
+source leaprc.water.{{WATERMODEL}}
+COM = loadpdb STRUCTURE_PDB
+solvateoct COM {{WATERBOX}} {{BUFFER}}
+charge COM
+addions2 COM Na+ 0
+addions2 COM Cl- 0
+saveAmberParm COM system.prmtop system.inpcrd
+savepdb COM system.pdb
+quit

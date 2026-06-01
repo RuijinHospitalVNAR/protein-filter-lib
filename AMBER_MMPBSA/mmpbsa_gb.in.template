@@ -1,0 +1,15 @@
+&general
+  startframe=STARTFRAME_PLACEHOLDER,
+  endframe=ENDFRAME_PLACEHOLDER,
+  interval=INTERVAL_PLACEHOLDER,
+  verbose=1,
+  entropy=0,
+  receptor_mask='RECEPTOR_MASK_PLACEHOLDER',
+  ligand_mask='LIGAND_MASK_PLACEHOLDER',
+  strip_mask=':WAT,HOH,Na+,Na,K+,K,Cl-,Cl',
+/
+
+&gb
+  igb=5,
+  saltcon=0.154,
+/

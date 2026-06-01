@@ -1,0 +1,20 @@
+# AF3_Cluster_Corse_v1.py 依赖包
+# Python 环境要求：Python 3.7+
+
+# 数值计算和科学计算
+numpy>=1.19.0,<2.0.0
+scipy>=1.5.0
+
+# 机器学习和聚类
+scikit-learn>=0.24.0
+hdbscan>=0.8.27
+
+# 生物信息学
+biopython>=1.79
+
+# 可视化
+matplotlib>=3.3.0
+
+# 系统监控
+psutil>=5.8.0
+

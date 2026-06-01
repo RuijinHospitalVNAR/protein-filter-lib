@@ -1,0 +1,865 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" font-family="'Segoe UI', Arial, Helvetica, sans-serif">
+  <defs>
+    <!-- 背景网格 -->
+    <pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#e8e8e8" stroke-width="0.5"/>
+    </pattern>
+
+    <!-- 柔和阴影 -->
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+
+    <filter id="shadow-sm" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.1"/>
+    </filter>
+
+    <filter id="glow-blue" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <filter id="glow-green" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <filter id="glow-orange" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- 渐变 -->
+    <linearGradient id="blue-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5dade2"/>
+      <stop offset="100%" stop-color="#2e86c1"/>
+    </linearGradient>
+
+    <linearGradient id="blue-grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ebf5fb"/>
+      <stop offset="100%" stop-color="#d4e6f1"/>
+    </linearGradient>
+
+    <linearGradient id="green-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#58d68d"/>
+      <stop offset="100%" stop-color="#28b463"/>
+    </linearGradient>
+
+    <linearGradient id="green-grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e9f7ef"/>
+      <stop offset="100%" stop-color="#d5f5e3"/>
+    </linearGradient>
+
+    <linearGradient id="orange-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5b041"/>
+      <stop offset="100%" stop-color="#d68910"/>
+    </linearGradient>
+
+    <linearGradient id="orange-grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef9e7"/>
+      <stop offset="100%" stop-color="#fdebd0"/>
+    </linearGradient>
+
+    <linearGradient id="purple-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#bb8fce"/>
+      <stop offset="100%" stop-color="#7d3c98"/>
+    </linearGradient>
+
+    <linearGradient id="purple-grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f5eef8"/>
+      <stop offset="100%" stop-color="#e8daef"/>
+    </linearGradient>
+
+    <linearGradient id="red-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec7063"/>
+      <stop offset="100%" stop-color="#c0392b"/>
+    </linearGradient>
+
+    <linearGradient id="teal-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#48c9b0"/>
+      <stop offset="100%" stop-color="#17a589"/>
+    </linearGradient>
+
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f7dc6f"/>
+      <stop offset="100%" stop-color="#d4ac0d"/>
+    </linearGradient>
+
+    <!-- 箭头 -->
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#888"/>
+    </marker>
+
+    <marker id="arr-b" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2e86c1"/>
+    </marker>
+
+    <marker id="arr-g" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#28b463"/>
+    </marker>
+
+    <marker id="arr-o" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#d68910"/>
+    </marker>
+
+    <marker id="arr-p" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#7d3c98"/>
+    </marker>
+
+    <!-- ========== 精美蛋白质3D图标 ========== -->
+    <g id="protein-3d">
+      <!-- Alpha螺旋 -  ribbon表示 -->
+      <path d="M 20,70 Q 30,50 40,60 Q 50,70 60,55 Q 70,40 80,50 Q 90,60 100,45 Q 110,30 120,40"
+            fill="none" stroke="#5dade2" stroke-width="8" stroke-linecap="round"/>
+      <!-- 氢键横杠 -->
+      <path d="M 28,58 L 32,68" stroke="#2e86c1" stroke-width="1.5" opacity="0.6"/>
+      <path d="M 42,62 L 48,72" stroke="#2e86c1" stroke-width="1.5" opacity="0.6"/>
+      <path d="M 58,52 L 62,62" stroke="#2e86c1" stroke-width="1.5" opacity="0.6"/>
+      <path d="M 72,42 L 78,52" stroke="#2e86c1" stroke-width="1.5" opacity="0.6"/>
+      <path d="M 88,48 L 92,58" stroke="#2e86c1" stroke-width="1.5" opacity="0.6"/>
+      <path d="M 102,38 L 108,48" stroke="#2e86c1" stroke-width="1.5" opacity="0.6"/>
+
+      <!-- Beta折叠 - 箭头表示 -->
+      <path d="M 15,85 L 25,80 L 35,85 L 45,80 L 55,85 L 65,80 L 75,85"
+            fill="none" stroke="#e74c3c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <polygon points="75,85 65,75 70,85 65,95" fill="#e74c3c"/>
+
+      <path d="M 85,90 L 95,85 L 105,90 L 115,85 L 125,90"
+            fill="none" stroke="#e74c3c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <polygon points="125,90 115,80 120,90 115,100" fill="#e74c3c"/>
+
+      <!-- Loop连接 - 虚线表示 -->
+      <path d="M 75,55 Q 80,65 85,60 Q 90,55 95,65 Q 100,75 105,70"
+            fill="none" stroke="#28b463" stroke-width="3" stroke-dasharray="4,3"/>
+
+      <!-- Cα原子球 -->
+      <circle cx="20" cy="70" r="4" fill="#5dade2" stroke="#2e86c1" stroke-width="1"/>
+      <circle cx="40" cy="60" r="4" fill="#5dade2" stroke="#2e86c1" stroke-width="1"/>
+      <circle cx="60" cy="55" r="4" fill="#5dade2" stroke="#2e86c1" stroke-width="1"/>
+      <circle cx="80" cy="50" r="4" fill="#5dade2" stroke="#2e86c1" stroke-width="1"/>
+      <circle cx="100" cy="45" r="4" fill="#5dade2" stroke="#2e86c1" stroke-width="1"/>
+      <circle cx="120" cy="40" r="4" fill="#5dade2" stroke="#2e86c1" stroke-width="1"/>
+
+      <!-- 侧链基团 -->
+      <circle cx="25" cy="62" r="3" fill="#9b59b6"/>
+      <circle cx="50" cy="48" r="3" fill="#f39c12"/>
+      <circle cx="75" cy="42" r="3" fill="#1abc9c"/>
+      <circle cx="110" cy="35" r="3" fill="#e74c3c"/>
+      <!-- 侧链键 -->
+      <line x1="28" y1="66" x2="25" y2="62" stroke="#888" stroke-width="1.5"/>
+      <line x1="56" y1="54" x2="50" y2="48" stroke="#888" stroke-width="1.5"/>
+      <line x1="78" y1="48" x2="75" y2="42" stroke="#888" stroke-width="1.5"/>
+      <line x1="106" y1="43" x2="110" y2="35" stroke="#888" stroke-width="1.5"/>
+    </g>
+
+    <!-- ========== 精美神经网络图标 ========== -->
+    <g id="neural-net">
+      <!-- 输入层 -->
+      <circle cx="30" cy="30" r="8" fill="#5dade2" opacity="0.9"/>
+      <circle cx="30" cy="55" r="8" fill="#5dade2" opacity="0.9"/>
+      <circle cx="30" cy="80" r="8" fill="#5dade2" opacity="0.9"/>
+      <circle cx="30" cy="105" r="8" fill="#5dade2" opacity="0.9"/>
+
+      <!-- 隐藏层1 -->
+      <circle cx="75" cy="20" r="8" fill="#f5b041" opacity="0.9"/>
+      <circle cx="75" cy="42" r="8" fill="#f5b041" opacity="0.9"/>
+      <circle cx="75" cy="64" r="8" fill="#f5b041" opacity="0.9"/>
+      <circle cx="75" cy="86" r="8" fill="#f5b041" opacity="0.9"/>
+      <circle cx="75" cy="108" r="8" fill="#f5b041" opacity="0.9"/>
+
+      <!-- 隐藏层2 -->
+      <circle cx="120" cy="30" r="8" fill="#f5b041" opacity="0.9"/>
+      <circle cx="120" cy="55" r="8" fill="#f5b041" opacity="0.9"/>
+      <circle cx="120" cy="80" r="8" fill="#f5b041" opacity="0.9"/>
+      <circle cx="120" cy="105" r="8" fill="#f5b041" opacity="0.9"/>
+
+      <!-- 输出层 -->
+      <circle cx="165" cy="45" r="9" fill="#28b463" opacity="0.9"/>
+      <circle cx="165" cy="70" r="9" fill="#28b463" opacity="0.9"/>
+      <circle cx="165" cy="95" r="9" fill="#28b463" opacity="0.9"/>
+
+      <!-- 连接线 - 输入到隐藏层1 -->
+      <line x1="38" y1="30" x2="67" y2="20" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="38" y1="30" x2="67" y2="42" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="38" y1="30" x2="67" y2="64" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="38" y1="55" x2="67" y2="20" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="38" y1="55" x2="67" y2="42" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="38" y1="55" x2="67" y2="64" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="38" y1="55" x2="67" y2="86" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="38" y1="80" x2="67" y2="42" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="38" y1="80" x2="67" y2="64" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="38" y1="80" x2="67" y2="86" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="38" y1="80" x2="67" y2="108" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="38" y1="105" x2="67" y2="64" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="38" y1="105" x2="67" y2="86" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="38" y1="105" x2="67" y2="108" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+
+      <!-- 连接线 - 隐藏层1到隐藏层2 -->
+      <line x1="83" y1="20" x2="112" y2="30" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="83" y1="20" x2="112" y2="55" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="83" y1="20" x2="112" y2="80" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="83" y1="20" x2="112" y2="105" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="83" y1="42" x2="112" y2="30" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="83" y1="42" x2="112" y2="55" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="83" y1="42" x2="112" y2="80" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="83" y1="42" x2="112" y2="105" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="83" y1="64" x2="112" y2="30" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="83" y1="64" x2="112" y2="55" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="83" y1="64" x2="112" y2="80" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="83" y1="64" x2="112" y2="105" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="83" y1="86" x2="112" y2="30" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="83" y1="86" x2="112" y2="55" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="83" y1="86" x2="112" y2="80" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="83" y1="86" x2="112" y2="105" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="83" y1="108" x2="112" y2="30" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="83" y1="108" x2="112" y2="55" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="83" y1="108" x2="112" y2="80" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+      <line x1="83" y1="108" x2="112" y2="105" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+
+      <!-- 连接线 - 隐藏层2到输出 -->
+      <line x1="128" y1="30" x2="156" y2="45" stroke="#ccc" stroke-width="1" opacity="0.7"/>
+      <line x1="128" y1="30" x2="156" y2="70" stroke="#ccc" stroke-width="1" opacity="0.7"/>
+      <line x1="128" y1="30" x2="156" y2="95" stroke="#ccc" stroke-width="1" opacity="0.7"/>
+      <line x1="128" y1="55" x2="156" y2="45" stroke="#ccc" stroke-width="1" opacity="0.7"/>
+      <line x1="128" y1="55" x2="156" y2="70" stroke="#ccc" stroke-width="1" opacity="0.7"/>
+      <line x1="128" y1="55" x2="156" y2="95" stroke="#ccc" stroke-width="1" opacity="0.7"/>
+      <line x1="128" y1="80" x2="156" y2="45" stroke="#ccc" stroke-width="1" opacity="0.7"/>
+      <line x1="128" y1="80" x2="156" y2="70" stroke="#ccc" stroke-width="1" opacity="0.7"/>
+      <line x1="128" y1="80" x2="156" y2="95" stroke="#ccc" stroke-width="1" opacity="0.7"/>
+      <line x1="128" y1="105" x2="156" y2="45" stroke="#ccc" stroke-width="1" opacity="0.7"/>
+      <line x1="128" y1="105" x2="156" y2="70" stroke="#ccc" stroke-width="1" opacity="0.7"/>
+      <line x1="128" y1="105" x2="156" y2="95" stroke="#ccc" stroke-width="1" opacity="0.7"/>
+
+      <!-- 层标签 -->
+      <text x="30" y="130" font-size="8" fill="#888" text-anchor="middle">Input</text>
+      <text x="75" y="130" font-size="8" fill="#888" text-anchor="middle">Hidden</text>
+      <text x="120" y="130" font-size="8" fill="#888" text-anchor="middle">Hidden</text>
+      <text x="165" y="130" font-size="8" fill="#888" text-anchor="middle">Output</text>
+    </g>
+
+    <!-- ========== Transformer块图标 ========== -->
+    <g id="transformer-block">
+      <!-- 主体 -->
+      <rect x="0" y="0" width="100" height="120" rx="8" fill="#fef9e7" stroke="#d68910" stroke-width="2"/>
+
+      <!-- Multi-Head Attention -->
+      <rect x="10" y="10" width="80" height="40" rx="4" fill="#fdebd0" stroke="#f5b041" stroke-width="1"/>
+      <text x="50" y="25" font-size="7" fill="#b9770e" text-anchor="middle">Multi-Head</text>
+      <text x="50" y="35" font-size="7" fill="#b9770e" text-anchor="middle">Attention</text>
+      <!-- 注意力示意 -->
+      <rect x="18" y="42" width="12" height="4" rx="1" fill="#f5b041" opacity="0.8"/>
+      <rect x="32" y="42" width="12" height="4" rx="1" fill="#f5b041" opacity="0.6"/>
+      <rect x="46" y="42" width="12" height="4" rx="1" fill="#f5b041" opacity="0.4"/>
+      <rect x="60" y="42" width="12" height="4" rx="1" fill="#f5b041" opacity="0.7"/>
+      <rect x="74" y="42" width="12" height="4" rx="1" fill="#f5b041" opacity="0.5"/>
+
+      <!-- Add & Norm -->
+      <text x="15" y="65" font-size="6" fill="#888">+</text>
+      <text x="50" y="65" font-size="6" fill="#888" text-anchor="middle">Norm</text>
+
+      <!-- FFN -->
+      <rect x="10" y="72" width="80" height="35" rx="4" fill="#fdebd0" stroke="#f5b041" stroke-width="1"/>
+      <text x="50" y="87" font-size="7" fill="#b9770e" text-anchor="middle">Feed Forward</text>
+      <text x="50" y="97" font-size="7" fill="#b9770e" text-anchor="middle">Network</text>
+      <!-- FFN神经元 -->
+      <circle cx="30" cy="94" r="4" fill="#f5b041" opacity="0.7"/>
+      <circle cx="50" cy="94" r="4" fill="#f5b041" opacity="0.9"/>
+      <circle cx="70" cy="94" r="4" fill="#f5b041" opacity="0.7"/>
+
+      <!-- Add & Norm -->
+      <text x="15" y="115" font-size="6" fill="#888">+</text>
+      <text x="50" y="115" font-size="6" fill="#888" text-anchor="middle">Norm</text>
+    </g>
+
+    <!-- ========== SPR仪器图标 ========== -->
+    <g id="spr-instrument">
+      <!-- 仪器主体 -->
+      <rect x="0" y="15" width="120" height="80" rx="6" fill="#f8f9fa" stroke="#666" stroke-width="2"/>
+
+      <!-- 屏幕 -->
+      <rect x="10" y="22" width="50" height="35" rx="3" fill="#e8f4fc" stroke="#5dade2" stroke-width="1.5"/>
+      <!-- 屏幕内容 - sensorgram -->
+      <polyline points="15,50 25,42 35,45 45,35 55,38" fill="none" stroke="#e74c3c" stroke-width="2" stroke-linecap="round"/>
+      <!-- 分子结合示意 -->
+      <circle cx="30" cy="30" r="3" fill="#5dade2"/>
+      <circle cx="38" cy="28" r="2" fill="#28b463"/>
+      <circle cx="45" cy="32" r="2" fill="#28b463"/>
+
+      <!-- 控制面板 -->
+      <rect x="70" y="22" width="40" height="20" rx="2" fill="#2c3e50"/>
+      <circle cx="78" cy="32" r="4" fill="#e74c3c"/>
+      <circle cx="90" cy="32" r="4" fill="#28b463"/>
+      <circle cx="102" cy="32" r="4" fill="#f5b041"/>
+
+      <!-- 进样泵 -->
+      <rect x="10" y="65" width="100" height="8" rx="2" fill="#ddd"/>
+      <rect x="15" y="66" width="30" height="6" rx="1" fill="#5dade2" opacity="0.6"/>
+
+      <!-- 传感器芯片 -->
+      <rect x="85" y="38" width="25" height="18" rx="2" fill="#3498db" opacity="0.3" stroke="#3498db" stroke-width="1.5"/>
+      <text x="97" y="49" font-size="6" fill="#3498db" text-anchor="middle">chip</text>
+
+      <!-- 进样管 -->
+      <path d="M 5,50 L 0,50 L 0,35" stroke="#5dade2" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <circle cx="0" cy="35" r="3" fill="#5dade2" opacity="0.6"/>
+
+      <!-- 液滴 -->
+      <path d="M 97,58 Q 100,65 97,70 Q 94,65 97,58" fill="#3498db" opacity="0.4"/>
+    </g>
+
+    <!-- ========== ELISA 96孔板图标 ========== -->
+    <g id="elisa-plate">
+      <!-- 板框 -->
+      <rect x="0" y="0" width="130" height="85" rx="4" fill="#f5f5f5" stroke="#888" stroke-width="2"/>
+
+      <!-- 8x12孔 -->
+      <!-- Row 1 -->
+      <circle cx="14" cy="14" r="5" fill="#fff" stroke="#ccc" stroke-width="1"/>
+      <circle cx="28" cy="14" r="5" fill="#fff" stroke="#ccc" stroke-width="1"/>
+      <circle cx="42" cy="14" r="5" fill="#28b463" opacity="0.2"/>
+      <circle cx="56" cy="14" r="5" fill="#28b463" opacity="0.5"/>
+      <circle cx="70" cy="14" r="5" fill="#fff" stroke="#ccc" stroke-width="1"/>
+      <circle cx="84" cy="14" r="5" fill="#28b463" opacity="0.8"/>
+      <circle cx="98" cy="14" r="5" fill="#fff" stroke="#ccc" stroke-width="1"/>
+      <circle cx="112" cy="14" r="5" fill="#e74c3c" opacity="0.6"/>
+
+      <!-- Row 2 -->
+      <circle cx="14" cy="28" r="5" fill="#28b463" opacity="0.4"/>
+      <circle cx="28" cy="28" r="5" fill="#28b463" opacity="0.7"/>
+      <circle cx="42" cy="28" r="5" fill="#fff" stroke="#ccc" stroke-width="1"/>
+      <circle cx="56" cy="28" r="5" fill="#28b463" opacity="0.3"/>
+      <circle cx="70" cy="28" r="5" fill="#28b463" opacity="0.9"/>
+      <circle cx="84" cy="28" r="5" fill="#fff" stroke="#ccc" stroke-width="1"/>
+      <circle cx="98" cy="28" r="5" fill="#28b463" opacity="0.6"/>
+      <circle cx="112" cy="28" r="5" fill="#fff" stroke="#ccc" stroke-width="1"/>
+
+      <!-- Row 3 -->
+      <circle cx="14" cy="42" r="5" fill="#fff" stroke="#ccc" stroke-width="1"/>
+      <circle cx="28" cy="42" r="5" fill="#28b463" opacity="0.6"/>
+      <circle cx="42" cy="42" r="5" fill="#28b463" opacity="0.8"/>
+      <circle cx="56" cy="42" r="5" fill="#fff" stroke="#ccc" stroke-width="1"/>
+      <circle cx="70" cy="42" r="5" fill="#28b463" opacity="0.4"/>
+      <circle cx="84" cy="42" r="5" fill="#28b463" opacity="0.7"/>
+      <circle cx="98" cy="42" r="5" fill="#e74c3c" opacity="0.4"/>
+      <circle cx="112" cy="42" r="5" fill="#28b463" opacity="0.5"/>
+
+      <!-- Row 4 -->
+      <circle cx="14" cy="56" r="5" fill="#28b463" opacity="0.9"/>
+      <circle cx="28" cy="56" r="5" fill="#fff" stroke="#ccc" stroke-width="1"/>
+      <circle cx="42" cy="56" r="5" fill="#28b463" opacity="0.3"/>
+      <circle cx="56" cy="56" r="5" fill="#28b463" opacity="0.7"/>
+      <circle cx="70" cy="56" r="5" fill="#fff" stroke="#ccc" stroke-width="1"/>
+      <circle cx="84" cy="56" r="5" fill="#28b463" opacity="0.5"/>
+      <circle cx="98" cy="56" r="5" fill="#28b463" opacity="0.8"/>
+      <circle cx="112" cy="56" r="5" fill="#fff" stroke="#ccc" stroke-width="1"/>
+
+      <!-- Row 5 -->
+      <circle cx="14" cy="70" r="5" fill="#fff" stroke="#ccc" stroke-width="1"/>
+      <circle cx="28" cy="70" r="5" fill="#28b463" opacity="0.5"/>
+      <circle cx="42" cy="70" r="5" fill="#28b463" opacity="0.7"/>
+      <circle cx="56" cy="70" r="5" fill="#e74c3c" opacity="0.8"/>
+      <circle cx="70" cy="70" r="5" fill="#fff" stroke="#ccc" stroke-width="1"/>
+      <circle cx="84" cy="70" r="5" fill="#28b463" opacity="0.6"/>
+      <circle cx="98" cy="70" r="5" fill="#fff" stroke="#ccc" stroke-width="1"/>
+      <circle cx="112" cy="70" r="5" fill="#28b463" opacity="0.4"/>
+
+      <!-- 读数头 -->
+      <path d="M 40,-15 L 40,0" stroke="#f5b041" stroke-width="2" stroke-dasharray="3,2"/>
+      <polygon points="37,0 43,0 40,5" fill="#f5b041"/>
+      <text x="40" y="-20" font-size="6" fill="#888" text-anchor="middle">read</text>
+    </g>
+
+    <!-- ========== 序列 embedding 图标 ========== -->
+    <g id="embedding">
+      <!-- 序列条 -->
+      <rect x="0" y="20" width="15" height="60" rx="3" fill="#5dade2" opacity="0.8"/>
+      <rect x="18" y="15" width="15" height="70" rx="3" fill="#e74c3c" opacity="0.8"/>
+      <rect x="36" y="25" width="15" height="50" rx="3" fill="#28b463" opacity="0.8"/>
+      <rect x="54" y="10" width="15" height="80" rx="3" fill="#f5b041" opacity="0.8"/>
+      <rect x="72" y="20" width="15" height="60" rx="3" fill="#9b59b6" opacity="0.8"/>
+      <rect x="90" y="30" width="15" height="40" rx="3" fill="#1abc9c" opacity="0.8"/>
+      <rect x="108" y="18" width="15" height="64" rx="3" fill="#3498db" opacity="0.8"/>
+      <rect x="126" y="22" width="15" height="56" rx="3" fill="#e74c3c" opacity="0.8"/>
+
+      <!-- 嵌入向量 -->
+      <rect x="5" y="92" width="130" height="12" rx="3" fill="#ddd" opacity="0.5"/>
+      <rect x="5" y="92" width="45" height="12" rx="3" fill="#5dade2" opacity="0.7"/>
+      <rect x="55" y="92" width="25" height="12" rx="3" fill="#28b463" opacity="0.5"/>
+      <rect x="85" y="92" width="35" height="12" rx="3" fill="#f5b041" opacity="0.6"/>
+
+      <text x="70" y="118" font-size="8" fill="#888" text-anchor="middle">Embedding Vector (1280-dim)</text>
+    </g>
+
+    <!-- ========== DNA序列图标 ========== -->
+    <g id="dna-seq">
+      <rect x="5" y="15" width="10" height="30" rx="2" fill="#5dade2" opacity="0.8"/>
+      <rect x="18" y="10" width="10" height="40" rx="2" fill="#e74c3c" opacity="0.8"/>
+      <rect x="31" y="18" width="10" height="24" rx="2" fill="#28b463" opacity="0.8"/>
+      <rect x="44" y="8" width="10" height="44" rx="2" fill="#f5b041" opacity="0.8"/>
+      <rect x="57" y="15" width="10" height="30" rx="2" fill="#9b59b6" opacity="0.8"/>
+      <rect x="70" y="20" width="10" height="20" rx="2" fill="#1abc9c" opacity="0.8"/>
+      <rect x="83" y="12" width="10" height="36" rx="2" fill="#3498db" opacity="0.8"/>
+      <rect x="96" y="17" width="10" height="26" rx="2" fill="#e74c3c" opacity="0.8"/>
+    </g>
+
+    <!-- ========== 实验流程试管图标 ========== -->
+    <g id="tube">
+      <path d="M 15,5 L 18,5 L 18,55 Q 18,65 30,65 Q 42,65 42,55 L 42,5 L 45,5" fill="none" stroke="#666" stroke-width="2"/>
+      <path d="M 18,40 Q 18,60 30,60 Q 42,60 42,40" fill="#5dade2" opacity="0.3"/>
+      <!-- 刻度 -->
+      <line x1="22" y1="20" x2="28" y2="20" stroke="#999" stroke-width="1"/>
+      <line x1="22" y1="30" x2="28" y2="30" stroke="#999" stroke-width="1"/>
+      <line x1="22" y1="40" x2="28" y2="40" stroke="#999" stroke-width="1"/>
+      <line x1="22" y1="50" x2="28" y2="50" stroke="#999" stroke-width="1"/>
+    </g>
+
+    <!-- ========== 芯片传感器图标 ========== -->
+    <g id="chip-sensor">
+      <rect x="5" y="20" width="70" height="40" rx="4" fill="#ecf0f1" stroke="#888" stroke-width="2"/>
+      <!-- 传感区 -->
+      <rect x="12" y="27" width="25" height="26" rx="2" fill="#5dade2" opacity="0.2" stroke="#5dade2" stroke-width="1.5"/>
+      <circle cx="24" cy="40" r="6" fill="#5dade2" opacity="0.5"/>
+      <circle cx="24" cy="40" r="3" fill="#2e86c1"/>
+      <!-- 参考区 -->
+      <rect x="43" y="27" width="25" height="26" rx="2" fill="#28b463" opacity="0.2" stroke="#28b463" stroke-width="1.5"/>
+      <circle cx="55" cy="40" r="6" fill="#28b463" opacity="0.5"/>
+      <circle cx="55" cy="40" r="3" fill="#1e8449"/>
+      <!-- 引脚 -->
+      <line x1="15" y1="60" x2="15" y2="70" stroke="#666" stroke-width="2"/>
+      <line x1="30" y1="60" x2="30" y2="70" stroke="#666" stroke-width="2"/>
+      <line x1="50" y1="60" x2="50" y2="70" stroke="#666" stroke-width="2"/>
+      <line x1="65" y1="60" x2="65" y2="70" stroke="#666" stroke-width="2"/>
+    </g>
+
+    <!-- ========== 细胞图标 ========== -->
+    <g id="cell">
+      <ellipse cx="40" cy="35" rx="35" ry="30" fill="#fadbd8" stroke="#e74c3c" stroke-width="2"/>
+      <!-- 细胞核 -->
+      <ellipse cx="35" cy="30" rx="12" ry="10" fill="#f5b7b1" stroke="#e74c3c" stroke-width="1"/>
+      <!-- 细胞膜受体 -->
+      <circle cx="10" cy="25" r="4" fill="#5dade2" stroke="#2e86c1" stroke-width="1"/>
+      <circle cx="15" cy="40" r="4" fill="#5dade2" stroke="#2e86c1" stroke-width="1"/>
+      <circle cx="8" cy="50" r="4" fill="#5dade2" stroke="#2e86c1" stroke-width="1"/>
+      <!-- 结合配体 -->
+      <circle cx="10" cy="25" r="2" fill="#28b463"/>
+      <circle cx="15" cy="40" r="2" fill="#28b463"/>
+    </g>
+
+    <!-- ========== 3D结构坐标图标 ========== -->
+    <g id="coords-3d">
+      <!-- 坐标轴 -->
+      <line x1="10" y1="70" x2="70" y2="70" stroke="#888" stroke-width="1.5"/>
+      <line x1="10" y1="70" x2="10" y2="10" stroke="#888" stroke-width="1.5"/>
+      <line x1="10" y1="70" x2="45" y2="85" stroke="#888" stroke-width="1.5"/>
+      <text x="72" y="73" font-size="8" fill="#888">x</text>
+      <text x="5" y="8" font-size="8" fill="#888">y</text>
+      <text x="48" y="90" font-size="8" fill="#888">z</text>
+
+      <!-- 3D原子 -->
+      <circle cx="25" cy="55" r="5" fill="#5dade2" stroke="#2e86c1" stroke-width="1"/>
+      <circle cx="40" cy="40" r="5" fill="#e74c3c" stroke="#c0392b" stroke-width="1"/>
+      <circle cx="55" cy="30" r="5" fill="#28b463" stroke="#1e8449" stroke-width="1"/>
+      <circle cx="35" cy="25" r="4" fill="#f5b041" stroke="#d68910" stroke-width="1"/>
+      <circle cx="50" cy="50" r="4" fill="#9b59b6" stroke="#7d3c98" stroke-width="1"/>
+
+      <!-- 化学键 -->
+      <line x1="28" y1="53" x2="37" y2="43" stroke="#888" stroke-width="1.5"/>
+      <line x1="42" y1="38" x2="52" y2="32" stroke="#888" stroke-width="1.5"/>
+      <line x1="37" y1="28" x2="48" y2="48" stroke="#888" stroke-width="1.5"/>
+    </g>
+
+    <!-- ========== SPR sensorgram 图标 ========== -->
+    <g id="sensorgram">
+      <!-- 坐标轴 -->
+      <line x1="30" y1="80" x2="120" y2="80" stroke="#888" stroke-width="1"/>
+      <line x1="30" y1="80" x2="30" y2="10" stroke="#888" stroke-width="1"/>
+      <text x="75" y="95" font-size="7" fill="#888" text-anchor="middle">Time</text>
+      <text x="15" y="45" font-size="7" fill="#888" text-anchor="middle" transform="rotate(-90, 15, 45)">RU</text>
+
+      <!-- 基线 -->
+      <line x1="30" y1="70" x2="45" y2="70" stroke="#888" stroke-width="1" stroke-dasharray="3,2"/>
+
+      <!-- 结合曲线 (association) -->
+      <path d="M 45,70 Q 55,70 60,45 Q 65,25 80,20 Q 95,18 100,20" fill="none" stroke="#3498db" stroke-width="2.5"/>
+
+      <!-- 解离曲线 (dissociation) -->
+      <path d="M 100,20 Q 105,25 110,40 Q 115,55 120,65" fill="none" stroke="#e74c3c" stroke-width="2.5"/>
+
+      <!-- 注释 -->
+      <text x="60" y="50" font-size="6" fill="#3498db">assoc</text>
+      <text x="108" y="45" font-size="6" fill="#e74c3c">dissoc</text>
+
+      <!-- 注射点 -->
+      <line x1="45" y1="75" x2="45" y2="15" stroke="#5dade2" stroke-width="1" stroke-dasharray="2,2"/>
+      <polygon points="42,15 48,15 45,10" fill="#5dade2"/>
+    </g>
+
+    <!-- ========== 结合曲线图标 ========== -->
+    <g id="binding-curve">
+      <!-- 坐标轴 -->
+      <line x1="25" y1="75" x2="115" y2="75" stroke="#888" stroke-width="1"/>
+      <line x1="25" y1="75" x2="25" y2="10" stroke="#888" stroke-width="1"/>
+      <text x="70" y="88" font-size="7" fill="#888" text-anchor="middle">Concentration</text>
+      <text x="15" y="42" font-size="7" fill="#888" text-anchor="middle" transform="rotate(-90, 15, 42)">Response</text>
+
+      <!-- 剂量响应曲线 -->
+      <path d="M 30,70 Q 40,68 50,55 Q 60,35 75,25 Q 90,20 105,20" fill="none" stroke="#28b463" stroke-width="2.5"/>
+
+      <!-- 数据点 -->
+      <circle cx="30" cy="70" r="3" fill="#28b463"/>
+      <circle cx="50" cy="55" r="3" fill="#28b463"/>
+      <circle cx="75" cy="25" r="3" fill="#28b463"/>
+      <circle cx="105" cy="20" r="3" fill="#28b463"/>
+
+      <!-- KD标注 -->
+      <text x="60" y="15" font-size="6" fill="#e74c3c" text-anchor="middle">KD = 10 nM</text>
+    </g>
+
+    <!-- ========== FACS散点图图标 ========== -->
+    <g id="facs">
+      <!-- 坐标轴 -->
+      <line x1="30" y1="80" x2="30" y2="10" stroke="#888" stroke-width="1"/>
+      <line x1="30" y1="80" x2="120" y2="80" stroke="#888" stroke-width="1"/>
+      <text x="75" y="90" font-size="6" fill="#888" text-anchor="middle">FSC-A</text>
+      <text x="18" y="45" font-size="6" fill="#888" text-anchor="middle" transform="rotate(-90, 18, 45)">SSC-A</text>
+
+      <!-- 细胞群 -->
+      <circle cx="50" cy="60" r="4" fill="#5dade2" opacity="0.6"/>
+      <circle cx="55" cy="55" r="3" fill="#5dade2" opacity="0.6"/>
+      <circle cx="48" cy="58" r="3" fill="#5dade2" opacity="0.6"/>
+      <circle cx="58" cy="62" r="4" fill="#5dade2" opacity="0.6"/>
+
+      <!-- 阳性群 -->
+      <circle cx="85" cy="35" r="5" fill="#28b463" opacity="0.7"/>
+      <circle cx="90" cy="30" r="4" fill="#28b463" opacity="0.7"/>
+      <circle cx="82" cy="32" r="3" fill="#28b463" opacity="0.7"/>
+      <circle cx="88" cy="38" r="4" fill="#28b463" opacity="0.7"/>
+      <circle cx="95" cy="35" r="3" fill="#28b463" opacity="0.7"/>
+
+      <!-- 门 -->
+      <path d="M 70,75 L 70,15 M 110,75 L 110,15" stroke="#e74c3c" stroke-width="1" stroke-dasharray="3,2"/>
+      <path d="M 25,45 L 120,45" stroke="#e74c3c" stroke-width="1" stroke-dasharray="3,2"/>
+    </g>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1200" height="900" fill="#fcfcfc"/>
+  <rect width="1200" height="900" fill="url(#grid)"/>
+
+  <!-- ========== 标题 ========== -->
+  <rect x="350" y="15" width="500" height="40" rx="8" fill="#2c3e50" filter="url(#shadow)"/>
+  <text x="600" y="40" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">Protein Language Model + Experimental Validation</text>
+
+  <!-- ========== 第一行：主流程 ========== -->
+
+  <!-- A. 蛋白质结构 -->
+  <rect x="30" y="75" width="200" height="320" rx="14" fill="url(#blue-grad2)" stroke="#2e86c1" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="130" y="105" font-size="13" font-weight="bold" fill="#2e86c1" text-anchor="middle">Protein Structure</text>
+
+  <!-- 精美蛋白质图 -->
+  <rect x="45" y="120" width="170" height="140" rx="10" fill="#ffffff" stroke="#5dade2" stroke-width="1.5" filter="url(#shadow-sm)"/>
+  <use href="#protein-3d" x="25" y="135"/>
+
+  <!-- 2D contact map -->
+  <rect x="45" y="275" width="80" height="50" rx="8" fill="#ffffff" stroke="#5dade2" stroke-width="1.5"/>
+  <text x="85" y="290" font-size="7" fill="#555" text-anchor="middle">MSA</text>
+  <rect x="52" y="295" width="66" height="25" rx="3" fill="#5dade2" opacity="0.15"/>
+  <rect x="55" y="298" width="15" height="15" rx="2" fill="#5dade2" opacity="0.4"/>
+  <rect x="72" y="298" width="15" height="15" rx="2" fill="#5dade2" opacity="0.6"/>
+  <rect x="89" y="298" width="15" height="15" rx="2" fill="#5dade2" opacity="0.3"/>
+  <rect x="55" y="315" width="15" height="5" rx="1" fill="#28b463" opacity="0.5"/>
+  <rect x="72" y="315" width="15" height="5" rx="1" fill="#e74c3c" opacity="0.5"/>
+
+  <!-- 序列 -->
+  <rect x="135" y="275" width="80" height="50" rx="8" fill="#ffffff" stroke="#5dade2" stroke-width="1.5"/>
+  <text x="175" y="290" font-size="7" fill="#555" text-anchor="middle">Sequence</text>
+  <use href="#dna-seq" x="145" y="298"/>
+
+  <!-- 3D坐标 -->
+  <rect x="45" y="335" width="170" height="50" rx="8" fill="#ffffff" stroke="#5dade2" stroke-width="1.5"/>
+  <text x="130" y="352" font-size="7" fill="#555" text-anchor="middle">3D Coordinates</text>
+  <use href="#coords-3d" x="95" y="358"/>
+
+  <!-- 箭头 A→B -->
+  <line x1="230" y1="235" x2="265" y2="235" stroke="#28b463" stroke-width="3" marker-end="url(#arr-g)"/>
+
+  <!-- B. 特征编码 -->
+  <rect x="265" y="75" width="200" height="320" rx="14" fill="url(#green-grad2)" stroke="#28b463" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="365" y="105" font-size="13" font-weight="bold" fill="#1e8449" text-anchor="middle">Feature Encoding</text>
+
+  <!-- Embedding示意 -->
+  <rect x="280" y="120" width="170" height="90" rx="10" fill="#ffffff" stroke="#28b463" stroke-width="1.5" filter="url(#shadow-sm)"/>
+  <text x="365" y="138" font-size="9" fill="#1e8449" text-anchor="middle">ESM2 / ProtBERT</text>
+  <use href="#embedding" x="285" y="148"/>
+
+  <!-- 结构特征 -->
+  <rect x="280" y="220" width="170" height="70" rx="10" fill="#ffffff" stroke="#28b463" stroke-width="1.5" filter="url(#shadow-sm)"/>
+  <text x="365" y="238" font-size="9" fill="#1e8449" text-anchor="middle">Structure Features</text>
+  <!-- PAE heatmap -->
+  <rect x="290" y="248" width="70" height="35" rx="4" fill="#e74c3c" opacity="0.5"/>
+  <rect x="290" y="248" width="35" height="17" rx="4" fill="#e74c3c" opacity="0.8"/>
+  <rect x="365" y="248" width="70" height="35" rx="4" fill="#28b463" opacity="0.4"/>
+  <text x="400" y="270" font-size="6" fill="#fff" text-anchor="middle">pLDDT</text>
+
+  <!-- 功能特征 -->
+  <rect x="280" y="300" width="170" height="70" rx="10" fill="#ffffff" stroke="#28b463" stroke-width="1.5" filter="url(#shadow-sm)"/>
+  <text x="365" y="318" font-size="9" fill="#1e8449" text-anchor="middle">Functional Features</text>
+  <!-- 打分条 -->
+  <rect x="290" y="332" width="150" height="12" rx="3" fill="#eee"/>
+  <rect x="290" y="332" width="100" height="12" rx="3" fill="#28b463" opacity="0.7"/>
+  <text x="440" y="342" font-size="6" fill="#888">score</text>
+
+  <!-- 箭头 B→C -->
+  <line x1="465" y1="235" x2="500" y2="235" stroke="#d68910" stroke-width="3" marker-end="url(#arr-o)"/>
+
+  <!-- C. 深度神经网络 -->
+  <rect x="500" y="75" width="260" height="320" rx="14" fill="url(#orange-grad2)" stroke="#d68910" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="630" y="105" font-size="13" font-weight="bold" fill="#b9770e" text-anchor="middle">Deep Neural Network</text>
+
+  <!-- Transformer堆叠 -->
+  <rect x="515" y="118" width="230" height="145" rx="10" fill="#ffffff" stroke="#f5b041" stroke-width="1.5" filter="url(#shadow-sm)"/>
+  <text x="630" y="135" font-size="9" fill="#b9770e" text-anchor="middle">Transformer Architecture</text>
+
+  <!-- Layer 1-6 -->
+  <rect x="525" y="145" width="60" height="105" rx="6" fill="#fef9e7" stroke="#f5b041" stroke-width="1"/>
+  <text x="555" y="160" font-size="7" fill="#b9770e" text-anchor="middle">Layer 1</text>
+  <rect x="535" y="168" width="40" height="25" rx="3" fill="#fdebd0"/>
+  <text x="555" y="180" font-size="5" fill="#b9770e" text-anchor="middle">Attn</text>
+  <text x="555" y="188" font-size="5" fill="#b9770e" text-anchor="middle">FFN</text>
+  <rect x="535" y="198" width="40" height="25" rx="3" fill="#fdebd0"/>
+  <text x="555" y="210" font-size="5" fill="#b9770e" text-anchor="middle">Attn</text>
+  <text x="555" y="218" font-size="5" fill="#b9770e" text-anchor="middle">FFN</text>
+
+  <rect x="595" y="145" width="60" height="105" rx="6" fill="#fef9e7" stroke="#f5b041" stroke-width="1"/>
+  <text x="625" y="160" font-size="7" fill="#b9770e" text-anchor="middle">Layer 2</text>
+  <rect x="605" y="168" width="40" height="25" rx="3" fill="#fdebd0"/>
+  <rect x="605" y="198" width="40" height="25" rx="3" fill="#fdebd0"/>
+
+  <rect x="665" y="145" width="60" height="105" rx="6" fill="#fef9e7" stroke="#f5b041" stroke-width="1"/>
+  <text x="695" y="160" font-size="7" fill="#b9770e" text-anchor="middle">Layer N</text>
+  <rect x="675" y="168" width="40" height="25" rx="3" fill="#fdebd0"/>
+  <rect x="675" y="198" width="40" height="25" rx="3" fill="#fdebd0"/>
+
+  <!-- Embedding input/output -->
+  <rect x="520" y="265" width="30" height="55" rx="4" fill="#5dade2" opacity="0.2" stroke="#5dade2" stroke-width="1"/>
+  <rect x="725" y="265" width="30" height="55" rx="4" fill="#28b463" opacity="0.2" stroke="#28b463" stroke-width="1"/>
+  <text x="535" y="330" font-size="6" fill="#555" text-anchor="middle">In</text>
+  <text x="740" y="330" font-size="6" fill="#555" text-anchor="middle">Out</text>
+
+  <!-- Prediction heads -->
+  <rect x="515" y="275" width="230" height="110" rx="10" fill="#ffffff" stroke="#f5b041" stroke-width="1.5" filter="url(#shadow-sm)"/>
+  <text x="630" y="295" font-size="9" fill="#b9770e" text-anchor="middle">Prediction Heads</text>
+
+  <rect x="525" y="305" width="65" height="35" rx="6" fill="#5dade2" opacity="0.15" stroke="#5dade2" stroke-width="1"/>
+  <text x="557" y="320" font-size="8" fill="#2e86c1" text-anchor="middle">Structure</text>
+  <text x="557" y="333" font-size="6" fill="#888" text-anchor="middle">3D coords</text>
+
+  <rect x="600" y="305" width="65" height="35" rx="6" fill="#e74c3c" opacity="0.15" stroke="#e74c3c" stroke-width="1"/>
+  <text x="632" y="320" font-size="8" fill="#c0392b" text-anchor="middle">Function</text>
+  <text x="632" y="333" font-size="6" fill="#888" text-anchor="middle">ΔG, Kd</text>
+
+  <rect x="675" y="305" width="65" height="35" rx="6" fill="#28b463" opacity="0.15" stroke="#28b463" stroke-width="1"/>
+  <text x="707" y="320" font-size="8" fill="#1e8449" text-anchor="middle">Fitness</text>
+  <text x="707" y="333" font-size="6" fill="#888" text-anchor="middle">EC50</text>
+
+  <!-- 箭头 C→D -->
+  <line x1="760" y1="235" x2="795" y2="235" stroke="#7d3c98" stroke-width="3" marker-end="url(#arr-p)"/>
+
+  <!-- D. 实验验证 -->
+  <rect x="795" y="75" width="375" height="320" rx="14" fill="url(#purple-grad2)" stroke="#7d3c98" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="982" y="105" font-size="13" font-weight="bold" fill="#7d3c98" text-anchor="middle">Experimental Validation</text>
+
+  <!-- SPR仪器 -->
+  <rect x="810" y="118" width="170" height="100" rx="10" fill="#ffffff" stroke="#7d3c98" stroke-width="1.5" filter="url(#shadow-sm)"/>
+  <text x="895" y="135" font-size="9" fill="#7d3c98" text-anchor="middle">SPR Instrument</text>
+  <use href="#spr-instrument" x="840" y="142"/>
+
+  <!-- ELISA板 -->
+  <rect x="990" y="118" width="165" height="100" rx="10" fill="#ffffff" stroke="#7d3c98" stroke-width="1.5" filter="url(#shadow-sm)"/>
+  <text x="1072" y="135" font-size="9" fill="#7d3c98" text-anchor="middle">ELISA 96-well</text>
+  <use href="#elisa-plate" x="1035" y="140"/>
+
+  <!-- SPR sensorgram结果 -->
+  <rect x="810" y="228" width="170" height="75" rx="10" fill="#ffffff" stroke="#7d3c98" stroke-width="1.5" filter="url(#shadow-sm)"/>
+  <text x="895" y="245" font-size="9" fill="#7d3c98" text-anchor="middle">SPR Sensorgram</text>
+  <use href="#sensorgram" x="855" y="248"/>
+
+  <!-- ELISA结果 -->
+  <rect x="990" y="228" width="165" height="75" rx="10" fill="#ffffff" stroke="#7d3c98" stroke-width="1.5" filter="url(#shadow-sm)"/>
+  <text x="1072" y="245" font-size="9" fill="#7d3c98" text-anchor="middle">ELISA Results</text>
+  <!-- 条形图 -->
+  <rect x="1000" y="252" width="145" height="45" rx="3" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+  <rect x="1008" y="280" width="18" height="15" fill="#28b463" opacity="0.5"/>
+  <rect x="1030" y="270" width="18" height="25" fill="#28b463" opacity="0.7"/>
+  <rect x="1052" y="260" width="18" height="35" fill="#28b463" opacity="0.9"/>
+  <rect x="1074" y="275" width="18" height="20" fill="#e74c3c" opacity="0.6"/>
+  <rect x="1096" y="265" width="18" height="30" fill="#e74c3c" opacity="0.8"/>
+  <text x="1017" y="295" font-size="5" fill="#888" text-anchor="middle">WT</text>
+  <text x="1061" y="295" font-size="5" fill="#888" text-anchor="middle">Mut</text>
+  <text x="1105" y="295" font-size="5" fill="#888" text-anchor="middle">Neg</text>
+
+  <!-- 细胞验证 -->
+  <rect x="810" y="313" width="170" height="70" rx="10" fill="#ffffff" stroke="#7d3c98" stroke-width="1.5" filter="url(#shadow-sm)"/>
+  <text x="895" y="330" font-size="9" fill="#7d3c98" text-anchor="middle">Cell-based Assay</text>
+  <use href="#cell" x="860" y="335"/>
+
+  <!-- FACS -->
+  <rect x="990" y="313" width="165" height="70" rx="10" fill="#ffffff" stroke="#7d3c98" stroke-width="1.5" filter="url(#shadow-sm)"/>
+  <text x="1072" y="330" font-size="9" fill="#7d3c98" text-anchor="middle">FACS Analysis</text>
+  <use href="#facs" x="1060" y="335"/>
+
+  <!-- ========== 第二行：流程总结 ========== -->
+  <rect x="30" y="420" width="1140" height="130" rx="14" fill="#f8f9fa" stroke="#bdc3c7" stroke-width="2" filter="url(#shadow)"/>
+
+  <!-- 流程步骤 -->
+  <rect x="50" y="445" width="130" height="80" rx="10" fill="url(#blue-grad2)" stroke="#2e86c1" stroke-width="2"/>
+  <use href="#protein-3d" x="55" y="455"/>
+  <text x="115" y="538" font-size="9" fill="#2e86c1" text-anchor="middle">Input</text>
+
+  <line x1="180" y1="485" x2="210" y2="485" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="210" y="445" width="130" height="80" rx="10" fill="url(#green-grad2)" stroke="#28b463" stroke-width="2"/>
+  <use href="#embedding" x="235" y="460"/>
+  <text x="275" y="538" font-size="9" fill="#1e8449" text-anchor="middle">Encoding</text>
+
+  <line x1="340" y1="485" x2="370" y2="485" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="370" y="445" width="130" height="80" rx="10" fill="url(#orange-grad2)" stroke="#d68910" stroke-width="2"/>
+  <text x="435" y="465" font-size="8" fill="#b9770e" text-anchor="middle">Neural</text>
+  <text x="435" y="477" font-size="8" fill="#b9770e" text-anchor="middle">Network</text>
+  <use href="#neural-net" x="405" y="465"/>
+  <text x="435" y="538" font-size="9" fill="#b9770e" text-anchor="middle">Prediction</text>
+
+  <line x1="500" y1="485" x2="530" y2="485" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="530" y="445" width="130" height="80" rx="10" fill="url(#purple-grad2)" stroke="#7d3c98" stroke-width="2"/>
+  <text x="595" y="465" font-size="8" fill="#7d3c98" text-anchor="middle">Wet Lab</text>
+  <text x="595" y="477" font-size="8" fill="#7d3c98" text-anchor="middle">Validation</text>
+  <use href="#spr-instrument" x="565" y="465"/>
+  <use href="#tube" x="625" y="465"/>
+  <text x="595" y="538" font-size="9" fill="#7d3c98" text-anchor="middle">SPR/ELISA</text>
+
+  <line x1="660" y1="485" x2="690" y2="485" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="690" y="445" width="130" height="80" rx="10" fill="#fef9e7" stroke="#d68910" stroke-width="2"/>
+  <text x="755" y="465" font-size="8" fill="#b9770e" text-anchor="middle">Iterative</text>
+  <text x="755" y="477" font-size="8" fill="#b9770e" text-anchor="middle">Optimization</text>
+  <!-- 循环箭头 -->
+  <path d="M 720,500 Q 755,485 790,500 Q 780,520 755,520 Q 730,520 720,500" fill="none" stroke="#d68910" stroke-width="2" stroke-dasharray="4,2"/>
+  <text x="755" y="538" font-size="9" fill="#b9770e" text-anchor="middle">ML ↔ Exp</text>
+
+  <line x1="820" y1="485" x2="850" y2="485" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="850" y="445" width="130" height="80" rx="10" fill="#fdf3e8" stroke="#b87a2e" stroke-width="2"/>
+  <text x="915" y="465" font-size="8" fill="#b87a2e" text-anchor="middle">Lead</text>
+  <text x="915" y="477" font-size="8" fill="#b87a2e" text-anchor="middle">Candidates</text>
+  <!-- 奖杯 -->
+  <polygon points="905,495 915,485 925,495 915,515" fill="#b87a2e" opacity="0.6"/>
+  <text x="915" y="538" font-size="9" fill="#b87a2e" text-anchor="middle">Final</text>
+
+  <line x1="980" y1="485" x2="1010" y2="485" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="1010" y="445" width="140" height="80" rx="10" fill="#ecf0f1" stroke="#34495e" stroke-width="2"/>
+  <text x="1080" y="465" font-size="8" fill="#34495e" text-anchor="middle">Clinical /</text>
+  <text x="1080" y="477" font-size="8" fill="#34495e" text-anchor="middle">Industrial</text>
+  <use href="#chip-sensor" x="1030" y="482"/>
+  <text x="1080" y="538" font-size="9" fill="#34495e" text-anchor="middle">Development</text>
+
+  <!-- ========== 第三行：参考文献 ========== -->
+  <rect x="30" y="575" width="1140" height="100" rx="14" fill="#fef9f0" stroke="#d4a574" stroke-width="2" filter="url(#shadow)"/>
+
+  <text x="600" y="600" font-size="12" font-weight="bold" fill="#8b6914" text-anchor="middle">Reference Architecture: ESM3 (EvolutionScale, Science 2025)</text>
+
+  <!-- ESM3流程 -->
+  <rect x="60" y="615" width="150" height="50" rx="8" fill="#ebf5fb" stroke="#3498db" stroke-width="1.5"/>
+  <text x="135" y="638" font-size="9" fill="#2980b9" text-anchor="middle">ESM3 Tokenizer</text>
+  <text x="135" y="652" font-size="8" fill="#888" text-anchor="middle">20 AA → tokens</text>
+
+  <line x1="210" y1="640" x2="240" y2="640" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="240" y="615" width="200" height="50" rx="8" fill="#e8f8f5" stroke="#1abc9c" stroke-width="1.5"/>
+  <text x="340" y="638" font-size="9" fill="#16a085" text-anchor="middle">ESM3 Transformer (475B)</text>
+  <text x="340" y="652" font-size="8" fill="#888" text-anchor="middle">Deep attention + geometric ML</text>
+
+  <line x1="440" y1="640" x2="470" y2="640" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="470" y="615" width="150" height="50" rx="8" fill="#fef5e7" stroke="#f39c12" stroke-width="1.5"/>
+  <text x="545" y="638" font-size="9" fill="#d68910" text-anchor="middle">Structure Decoding</text>
+  <text x="545" y="652" font-size="8" fill="#888" text-anchor="middle">Atomic coordinates</text>
+
+  <line x1="620" y1="640" x2="650" y2="640" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="650" y="615" width="150" height="50" rx="8" fill="#fdedec" stroke="#e74c3c" stroke-width="1.5"/>
+  <text x="725" y="638" font-size="9" fill="#c0392b" text-anchor="middle">Confidence</text>
+  <text x="725" y="652" font-size="8" fill="#888" text-anchor="middle">pLDDT, pTM, iPTM</text>
+
+  <line x1="800" y1="640" x2="830" y2="640" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="830" y="615" width="150" height="50" rx="8" fill="#f5eef8" stroke="#9b59b6" stroke-width="1.5"/>
+  <text x="905" y="638" font-size="9" fill="#7d3c98" text-anchor="middle">Wet Lab Valid.</text>
+  <text x="905" y="652" font-size="8" fill="#888" text-anchor="middle">SPR, ELISA, Binding</text>
+
+  <line x1="980" y1="640" x2="1010" y2="640" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="1010" y="615" width="150" height="50" rx="8" fill="#fdf3e8" stroke="#b87a2e" stroke-width="1.5"/>
+  <text x="1085" y="638" font-size="9" fill="#b87a2e" text-anchor="middle">Iterative Opt.</text>
+  <text x="1085" y="652" font-size="8" fill="#888" text-anchor="middle">ML → Exp loop</text>
+
+  <!-- ========== 第四行：配色说明 ========== -->
+  <rect x="30" y="700" width="1140" height="185" rx="14" fill="#f9f9f9" stroke="#e0e0e0" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="600" y="725" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">图例 Legend</text>
+
+  <!-- 左列 -->
+  <rect x="60" y="745" width="25" height="25" rx="4" fill="#5dade2"/>
+  <text x="95" y="762" font-size="10" fill="#555">蛋白质结构 / Protein Structure</text>
+
+  <rect x="60" y="780" width="25" height="25" rx="4" fill="#28b463"/>
+  <text x="95" y="797" font-size="10" fill="#555">特征编码 / Feature Encoding</text>
+
+  <rect x="60" y="815" width="25" height="25" rx="4" fill="#f5b041"/>
+  <text x="95" y="832" font-size="10" fill="#555">深度神经网络 / Deep Neural Network</text>
+
+  <rect x="60" y="850" width="25" height="25" rx="4" fill="#9b59b6"/>
+  <text x="95" y="867" font-size="10" fill="#555">实验验证 / Experimental Validation</text>
+
+  <!-- 中列 -->
+  <rect x="380" y="745" width="25" height="25" rx="4" fill="#e74c3c" opacity="0.6"/>
+  <text x="415" y="762" font-size="10" fill="#555">SPR Sensorgram (结合/解离)</text>
+
+  <rect x="380" y="780" width="25" height="25" rx="4" fill="#28b463" opacity="0.7"/>
+  <text x="415" y="797" font-size="10" fill="#555">ELISA 阳性信号</text>
+
+  <rect x="380" y="815" width="25" height="25" rx="4" fill="#5dade2" opacity="0.6"/>
+  <text x="415" y="832" font-size="10" fill="#555">Alpha螺旋 / Alpha Helix</text>
+
+  <rect x="380" y="850" width="25" height="25" rx="4" fill="#e74c3c" opacity="0.5"/>
+  <text x="415" y="867" font-size="10" fill="#555">Beta折叠 / Beta Sheet</text>
+
+  <!-- 右列 -->
+  <rect x="700" y="745" width="25" height="25" rx="4" fill="#fadbd8"/>
+  <text x="735" y="762" font-size="10" fill="#555">细胞 / Cell</text>
+
+  <rect x="700" y="780" width="25" height="25" rx="4" fill="#d5f5e3"/>
+  <text x="735" y="797" font-size="10" fill="#555">Loop区域 / Loop Region</text>
+
+  <rect x="700" y="815" width="25" height="25" rx="4" fill="#fef9e7"/>
+  <text x="735" y="832" font-size="10" fill="#555">Transformer Block</text>
+
+  <rect x="700" y="850" width="25" height="25" rx="4" fill="#e8daef"/>
+  <text x="735" y="867" font-size="10" fill="#555">Attention权重 / Attention Weights</text>
+
+  <!-- 箭头说明 -->
+  <line x1="900" y1="760" x2="950" y2="760" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="960" y="764" font-size="10" fill="#555">数据流向</text>
+
+  <line x1="900" y1="795" x2="950" y2="795" stroke="#888" stroke-width="2" stroke-dasharray="4,2"/>
+  <text x="960" y="799" font-size="10" fill="#555">可选/条件步骤</text>
+
+  <line x1="900" y1="830" x2="950" y2="830" stroke="#888" stroke-width="2" stroke-dasharray="2,2"/>
+  <text x="960" y="834" font-size="10" fill="#555">循环迭代</text>
+
+  <!-- ========== 底部引用 ========== -->
+  <rect x="30" y="865" width="1140" height="28" rx="6" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1"/>
+  <text x="600" y="884" font-size="9" fill="#7f8c8d" text-anchor="middle">References: (1) Lin et al., Science 2025 - ESM3: Evolutionary-scale prediction of atomic-level protein structure with a language model | (2) Nature Biotech 2026 - Protein Engineering doi:10.1038/s41587-026-03087-3</text>
+</svg>

@@ -1,0 +1,35 @@
+# Optimization / 亲和力成熟模式默认配置
+# 由 run_optimization_pipeline.sh 使用；可通过 CONFIG 指定其它 YAML
+# 环境变量 AF3_DIR、TOP_N、EXAMPLE_BASE 等会覆盖此处值（env 优先）
+#
+# 用法：
+#   bash scripts/run_optimization_pipeline.sh
+#   CONFIG=config/my_optimizing.yaml bash scripts/run_optimization_pipeline.sh
+#   AF3_DIR=/path/to/af3 bash scripts/run_optimization_pipeline.sh  # env 覆盖 YAML
+
+# AF3 预测输出目录（含 PDB/JSON），必须存在；可通过环境变量 AF3_DIR 覆盖或在此填写
+af3_dir: /path/to/af3_output
+
+# 示例/项目输出根目录；null 表示使用 $REPO_ROOT/examples/affinity_maturation_example
+example_base: null
+
+# Part2 选出 interface_score 前 N 个候选进入 Part3 MD
+top_n: 10
+
+# Part3 AMBER production MD 时长（ns）
+production_ns: 1
+
+# 多 GPU 时每进程绑定的 CPU 核数（taskset），避免进程争用
+ntomp: 8
+
+# 后处理并行 worker 数（cpptraj 合并/去水/RMSD）
+postprocess_workers: 12
+
+# MMGBSA 批量计算并行 worker 数
+mmpbsa_workers: 12
+
+# 1=跳过 MMGBSA（仅跑 Part2+Part3 后处理）
+skip_mmgbsa: 0
+
+# N_GPU：null/auto=自动检测；整数=固定 GPU 数；环境变量 N_GPU 优先
+n_gpu: null

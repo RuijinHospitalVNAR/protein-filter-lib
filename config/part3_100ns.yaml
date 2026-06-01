@@ -1,0 +1,37 @@
+# Part 3 正式运行配置（100ns Production）
+# 用于最终筛选和正式分析
+
+input:
+  csv: ""
+  dir: ""
+  top_n: 30
+
+chains:
+  target_chain: "A"
+  binder_chain: "B"
+
+physics:
+  temperature: 298.15
+  ph: 7.4
+  ion_concentration: 0.154
+
+md:
+  production_ns: 100  # 正式运行：100ns
+  npt_ns: 1
+  interval: 5
+
+forcefield: "amber99sb"
+
+resources:
+  n_gpu: 8
+  gpu_ids: [0, 1, 2, 3, 4, 5, 6, 7]
+  ntomp: 6
+
+output:
+  base_dir: ""
+  run_id: ""
+  structure_subdir: true
+
+resume:
+  enabled: true      # 默认启用 resume
+  rerun_failed: false

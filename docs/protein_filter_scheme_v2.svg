@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1080" font-family="'Segoe UI', Arial, Helvetica, sans-serif">
+  <defs>
+    <!-- 背景网格图案 -->
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#f0f0f0" stroke-width="0.5"/>
+    </pattern>
+
+    <!-- 柔和阴影 -->
+    <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.1"/>
+    </filter>
+
+    <filter id="card-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#000000" flood-opacity="0.12"/>
+    </filter>
+
+    <!-- 发光效果 -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 漏斗渐变 - Stage 1 (青绿) -->
+    <linearGradient id="funnel1-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e0f5f5"/>
+      <stop offset="100%" stop-color="#b8e6e6"/>
+    </linearGradient>
+
+    <!-- 漏斗渐变 - Stage 2 (深蓝) -->
+    <linearGradient id="funnel2-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e8eff7"/>
+      <stop offset="100%" stop-color="#c5d5e8"/>
+    </linearGradient>
+
+    <!-- 漏斗渐变 - Stage 3 (紫灰) -->
+    <linearGradient id="funnel3-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#efeaf4"/>
+      <stop offset="100%" stop-color="#dcd0e5"/>
+    </linearGradient>
+
+    <!-- 收缩区渐变 -->
+    <linearGradient id="neck1-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c8e0e0"/>
+      <stop offset="100%" stop-color="#a8d0d0"/>
+    </linearGradient>
+
+    <linearGradient id="neck2-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#b8cce0"/>
+      <stop offset="100%" stop-color="#98b8d0"/>
+    </linearGradient>
+
+    <!-- 箭头标记 -->
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#555555"/>
+    </marker>
+
+    <marker id="arrow-green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#27ae60"/>
+    </marker>
+
+    <marker id="arrow-gold" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#b87a2e"/>
+    </marker>
+
+    <!-- ========== 图标定义 ========== -->
+
+    <!-- PLM 模型图标 -->
+    <g id="icon-plm">
+      <rect x="3" y="8" width="8" height="16" rx="2" fill="#3498db" opacity="0.85"/>
+      <rect x="14" y="4" width="8" height="24" rx="2" fill="#3498db"/>
+      <rect x="25" y="8" width="8" height="16" rx="2" fill="#3498db" opacity="0.85"/>
+      <line x1="11" y1="16" x2="14" y2="16" stroke="#2980b9" stroke-width="2"/>
+      <line x1="22" y1="16" x2="25" y2="16" stroke="#2980b9" stroke-width="2"/>
+      <circle cx="7" cy="12" r="2" fill="#fff"/>
+      <circle cx="18" cy="10" r="2" fill="#fff"/>
+      <circle cx="29" cy="12" r="2" fill="#fff"/>
+    </g>
+
+    <!-- MPNN 模型图标 -->
+    <g id="icon-mpnn">
+      <circle cx="10" cy="10" r="5" fill="#e74c3c" opacity="0.9" stroke="#c0392b" stroke-width="1.5"/>
+      <circle cx="28" cy="8" r="5" fill="#e74c3c" opacity="0.9" stroke="#c0392b" stroke-width="1.5"/>
+      <circle cx="20" cy="22" r="5" fill="#e74c3c" opacity="0.9" stroke="#c0392b" stroke-width="1.5"/>
+      <circle cx="34" cy="20" r="5" fill="#e74c3c" opacity="0.9" stroke="#c0392b" stroke-width="1.5"/>
+      <line x1="14" y1="12" x2="18" y2="19" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/>
+      <line x1="25" y1="11" x2="30" y2="18" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/>
+      <line x1="23" y1="22" x2="30" y2="21" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/>
+    </g>
+
+    <!-- Diffusion 模型图标 -->
+    <g id="icon-diffusion">
+      <circle cx="8" cy="16" r="6" fill="none" stroke="#9b59b6" stroke-width="2" stroke-dasharray="3,2"/>
+      <circle cx="20" cy="16" r="6" fill="#9b59b6" opacity="0.4" stroke="#9b59b6" stroke-width="2"/>
+      <circle cx="32" cy="16" r="6" fill="#9b59b6" opacity="0.85" stroke="#9b59b6" stroke-width="2"/>
+      <path d="M 4,16 L 38,16" stroke="#9b59b6" stroke-width="1" opacity="0.4"/>
+      <circle cx="8" cy="16" r="2" fill="#9b59b6"/>
+      <circle cx="20" cy="16" r="2" fill="#fff"/>
+      <circle cx="32" cy="16" r="2" fill="#fff"/>
+    </g>
+
+    <!-- 蛋白质结构图标 -->
+    <g id="icon-protein">
+      <path d="M 5,15 Q 12,4 20,12 Q 28,20 35,8" fill="none" stroke="#555" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 8,24 Q 16,14 26,22 Q 33,28 38,16" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="12" cy="10" r="3.5" fill="#e74c3c"/>
+      <circle cx="28" cy="14" r="3.5" fill="#3498db"/>
+      <circle cx="20" cy="23" r="3.5" fill="#2ecc71"/>
+    </g>
+
+    <!-- 漏斗筛选图标 -->
+    <g id="icon-filter">
+      <polygon points="8,4 32,4 23,18 17,18" fill="#1b7a7a" opacity="0.4" stroke="#1b7a7a" stroke-width="1.5" stroke-linejoin="round"/>
+      <line x1="17" y1="18" x2="17" y2="26" stroke="#1b7a7a" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="13" y1="26" x2="21" y2="26" stroke="#1b7a7a" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- 聚类图标 -->
+    <g id="icon-cluster">
+      <circle cx="10" cy="12" r="6" fill="#1b7a7a" opacity="0.3" stroke="#1b7a7a" stroke-width="1.5"/>
+      <circle cx="24" cy="8" r="6" fill="#1b7a7a" opacity="0.5" stroke="#1b7a7a" stroke-width="1.5"/>
+      <circle cx="32" cy="18" r="6" fill="#1b7a7a" opacity="0.25" stroke="#1b7a7a" stroke-width="1.5"/>
+      <circle cx="18" cy="24" r="6" fill="#1b7a7a" opacity="0.4" stroke="#1b7a7a" stroke-width="1.5"/>
+      <circle cx="10" cy="12" r="2" fill="#1b7a7a"/>
+      <circle cx="24" cy="8" r="2" fill="#1b7a7a"/>
+      <circle cx="32" cy="18" r="2" fill="#1b7a7a"/>
+      <circle cx="18" cy="24" r="2" fill="#1b7a7a"/>
+    </g>
+
+    <!-- 松弛图标 -->
+    <g id="icon-relax">
+      <path d="M 4,16 Q 9,10 14,16 Q 19,22 24,16 Q 29,10 34,16" fill="none" stroke="#2c5f8a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="4" cy="16" r="2" fill="#2c5f8a"/>
+      <circle cx="34" cy="16" r="2" fill="#2c5f8a"/>
+    </g>
+
+    <!-- PPI图标 -->
+    <g id="icon-ppi">
+      <path d="M 4,8 Q 14,4 20,16 Q 26,28 36,24" fill="none" stroke="#2c5f8a" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 4,24 Q 14,28 20,16 Q 26,4 36,8" fill="none" stroke="#2c5f8a" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="20" cy="16" r="5" fill="#e74c3c" opacity="0.9"/>
+      <circle cx="20" cy="16" r="2" fill="#fff"/>
+    </g>
+
+    <!-- 齿轮/工具图标 -->
+    <g id="icon-tools">
+      <circle cx="20" cy="15" r="11" fill="none" stroke="#2c5f8a" stroke-width="2"/>
+      <circle cx="20" cy="15" r="5" fill="#2c5f8a" opacity="0.3"/>
+      <line x1="20" y1="1" x2="20" y2="5" stroke="#2c5f8a" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="20" y1="25" x2="20" y2="29" stroke="#2c5f8a" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="6" y1="8" x2="9" y2="11" stroke="#2c5f8a" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="31" y1="19" x2="34" y2="22" stroke="#2c5f8a" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="6" y1="22" x2="9" y2="19" stroke="#2c5f8a" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="31" y1="11" x2="34" y2="8" stroke="#2c5f8a" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- MD图标 -->
+    <g id="icon-md">
+      <path d="M 4,12 Q 11,6 18,14 Q 25,22 32,10 Q 36,4 38,14" fill="none" stroke="#6b4c7a" stroke-width="2" stroke-dasharray="3,2" stroke-linecap="round"/>
+      <circle cx="20" cy="15" r="6" fill="#6b4c7a" opacity="0.2" stroke="#6b4c7a" stroke-width="2"/>
+      <circle cx="20" cy="15" r="2" fill="#6b4c7a"/>
+    </g>
+
+    <!-- RMSD图标 -->
+    <g id="icon-rmsd">
+      <rect x="3" y="3" width="34" height="24" rx="3" fill="none" stroke="#6b4c7a" stroke-width="1.5"/>
+      <polyline points="5,22 10,19 16,24 22,17 28,20 35,14" fill="none" stroke="#6b4c7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="5" cy="22" r="2" fill="#6b4c7a"/>
+      <circle cx="35" cy="14" r="2" fill="#6b4c7a"/>
+    </g>
+
+    <!-- 能量图标 -->
+    <g id="icon-energy">
+      <rect x="3" y="3" width="34" height="24" rx="3" fill="none" stroke="#6b4c7a" stroke-width="1.5"/>
+      <path d="M 6,24 Q 14,20 18,12 Q 22,5 30,8" fill="none" stroke="#e74c3c" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="30" cy="8" r="3" fill="#e74c3c"/>
+    </g>
+
+    <!-- 奖杯/星星图标 -->
+    <g id="icon-star">
+      <polygon points="20,1 24,13 37,13 27,21 31,33 20,25 9,33 13,21 3,13 16,13" fill="#b87a2e" opacity="0.25" stroke="#b87a2e" stroke-width="1.5" stroke-linejoin="round"/>
+      <polygon points="20,6 23,14 32,14 25,19 28,28 20,23 12,28 15,19 8,14 17,14" fill="#b87a2e" opacity="0.5"/>
+    </g>
+
+    <!-- 序列图标 -->
+    <g id="icon-sequence">
+      <rect x="3" y="6" width="7" height="20" rx="2" fill="#27ae60" opacity="0.85"/>
+      <rect x="12" y="10" width="7" height="12" rx="2" fill="#e74c3c" opacity="0.85"/>
+      <rect x="21" y="3" width="7" height="26" rx="2" fill="#3498db" opacity="0.85"/>
+      <rect x="30" y="8" width="7" height="16" rx="2" fill="#f39c12" opacity="0.85"/>
+    </g>
+
+    <!-- 数据库/文件图标 -->
+    <g id="icon-database">
+      <ellipse cx="20" cy="8" rx="14" ry="5" fill="#3498db" opacity="0.8"/>
+      <path d="M 6,8 L 6,24 Q 6,28 20,28 Q 34,28 34,24 L 34,8" fill="#3498db" opacity="0.5" stroke="#3498db" stroke-width="1.5"/>
+      <path d="M 6,16 Q 6,20 20,20 Q 34,20 34,16" fill="none" stroke="#3498db" stroke-width="1"/>
+      <path d="M 6,24 Q 6,28 20,28 Q 34,28 34,24" fill="none" stroke="#3498db" stroke-width="1.5"/>
+    </g>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1000" height="1080" fill="#fafbfc"/>
+  <rect width="1000" height="1080" fill="url(#grid)" opacity="0.5"/>
+
+  <!-- ========== 标题区域 ========== -->
+  <rect x="200" y="15" width="600" height="50" rx="8" fill="#2c3e50" filter="url(#soft-shadow)"/>
+  <text x="500" y="40" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle">AI-Aided Protein Design Pipeline</text>
+  <text x="500" y="58" font-size="11" fill="#bdc3c7" text-anchor="middle">Sequence Library Construction &amp; Multi-stage Filtering Funnel</text>
+
+  <!-- ========== INPUT (顶部) ========== -->
+  <rect x="350" y="80" width="300" height="55" rx="10" fill="#ffffff" stroke="#34495e" stroke-width="2" filter="url(#card-shadow)"/>
+  <use href="#icon-protein" x="365" y="90"/>
+  <text x="500" y="108" font-size="12" font-weight="bold" fill="#2c3e50" text-anchor="middle">AF3 Predicted Structures</text>
+  <text x="500" y="124" font-size="9" fill="#7f8c8d" text-anchor="middle">.pdb + .json (pLDDT / PTM / iPTM / PAE)</text>
+
+  <!-- 输入到建库的连线 -->
+  <path d="M 350,107 L 310,107" stroke="#27ae60" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow-green)"/>
+
+  <!-- ========== PART 0: 序列建库 (左侧) ========== -->
+  <rect x="30" y="80" width="280" height="460" rx="14" fill="#f0f9f0" stroke="#27ae60" stroke-width="2.5" filter="url(#card-shadow)"/>
+  <text x="170" y="110" font-size="15" font-weight="bold" fill="#27ae60" text-anchor="middle">Part 0 | Sequence Library</text>
+  <text x="170" y="128" font-size="10" fill="#6aaa6a" text-anchor="middle">AI-Generated Variants</text>
+
+  <!-- PLM 模块 -->
+  <rect x="50" y="150" width="240" height="88" rx="10" fill="#ffffff" stroke="#3498db" stroke-width="2" filter="url(#soft-shadow)"/>
+  <use href="#icon-plm" x="65" y="172"/>
+  <text x="170" y="188" font-size="13" font-weight="bold" fill="#3498db" text-anchor="middle">Protein Language Model</text>
+  <text x="170" y="206" font-size="10" fill="#555555" text-anchor="middle">ESM2 / ProtBERT / UniRep</text>
+  <text x="170" y="222" font-size="9" fill="#888888" text-anchor="middle">Embedding + Fitness Prediction</text>
+
+  <!-- MPNN 模块 -->
+  <rect x="50" y="248" width="240" height="88" rx="10" fill="#ffffff" stroke="#e74c3c" stroke-width="2" filter="url(#soft-shadow)"/>
+  <use href="#icon-mpnn" x="65" y="270"/>
+  <text x="170" y="286" font-size="13" font-weight="bold" fill="#e74c3c" text-anchor="middle">Message Passing NN</text>
+  <text x="170" y="304" font-size="10" fill="#555555" text-anchor="middle">ProteinMPNN / MPNN</text>
+  <text x="170" y="320" font-size="9" fill="#888888" text-anchor="middle">Backbone-aware Sequence Design</text>
+
+  <!-- Diffusion 模块 -->
+  <rect x="50" y="346" width="240" height="88" rx="10" fill="#ffffff" stroke="#9b59b6" stroke-width="2" filter="url(#soft-shadow)"/>
+  <use href="#icon-diffusion" x="65" y="368"/>
+  <text x="170" y="384" font-size="13" font-weight="bold" fill="#9b59b6" text-anchor="middle">Diffusion Model</text>
+  <text x="170" y="402" font-size="10" fill="#555555" text-anchor="middle">Chroma / RFdiffusion</text>
+  <text x="170" y="418" font-size="9" fill="#888888" text-anchor="middle">De novo Structure Generation</text>
+
+  <!-- 建库输出 -->
+  <rect x="55" y="448" width="230" height="35" rx="8" fill="#d5f5d5" stroke="#27ae60" stroke-width="1.5" filter="url(#soft-shadow)"/>
+  <use href="#icon-sequence" x="65" y="452"/>
+  <use href="#icon-database" x="220" y="452"/>
+  <text x="170" y="472" font-size="10" font-weight="bold" fill="#27ae60" text-anchor="middle">seq_library_v1.parquet</text>
+
+  <!-- 建库 → 漏斗 连接线 -->
+  <path d="M 310,310 Q 350,310 350,280 Q 350,250 380,250" stroke="#27ae60" stroke-width="2.5" fill="none" stroke-dasharray="6,3" marker-end="url(#arrow-green)"/>
+  <rect x="325" y="268" width="50" height="18" rx="4" fill="#f0f9f0"/>
+  <text x="350" y="281" font-size="8" fill="#27ae60" text-anchor="middle">Variants</text>
+
+  <!-- ========== 筛选漏斗 (右侧) ========== -->
+  <text x="660" y="75" font-size="16" font-weight="bold" fill="#2c3e50" text-anchor="middle">Multi-Stage Filtering Funnel</text>
+
+  <!-- 漏斗背景轮廓 (虚线) -->
+  <path d="M 380,145 L 680,145 L 680,150 L 620,305 L 560,305 L 560,310 L 520,460 L 480,460 L 480,465 L 460,570 L 460,690 L 480,690 L 480,695 L 520,695 L 520,690 L 560,690 L 560,695 L 620,695 L 620,690 L 680,690 L 680,695 L 680,145 Z" fill="none" stroke="#bdc3c7" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+  <!-- Stage 1: AF3 Confidence (最宽) -->
+  <polygon points="380,145 680,145 630,325 430,325" fill="url(#funnel1-grad)" stroke="#1b7a7a" stroke-width="2.5" filter="url(#card-shadow)"/>
+  <text x="530" y="175" font-size="14" font-weight="bold" fill="#1b7a7a" text-anchor="middle">Stage 1 | AF3 Confidence &amp; Clustering</text>
+
+  <!-- Stage 1 步骤 -->
+  <rect x="400" y="195" width="260" height="34" rx="6" fill="#ffffff" stroke="#1b7a7a" stroke-width="1.5" filter="url(#soft-shadow)"/>
+  <use href="#icon-filter" x="408" y="201"/>
+  <text x="530" y="218" font-size="10" font-weight="bold" fill="#1b7a7a" text-anchor="middle">pLDDT Filter + Clash Detection</text>
+
+  <rect x="400" y="237" width="260" height="34" rx="6" fill="#ffffff" stroke="#1b7a7a" stroke-width="1.5" filter="url(#soft-shadow)"/>
+  <use href="#icon-cluster" x="408" y="243"/>
+  <text x="530" y="260" font-size="10" font-weight="bold" fill="#1b7a7a" text-anchor="middle">Foldseek Clustering + TM-score</text>
+
+  <rect x="400" y="279" width="260" height="34" rx="6" fill="#ffffff" stroke="#1b7a7a" stroke-width="1.5" filter="url(#soft-shadow)"/>
+  <use href="#icon-filter" x="408" y="285"/>
+  <text x="530" y="302" font-size="10" font-weight="bold" fill="#1b7a7a" text-anchor="middle">H-A Interface Contact Analysis</text>
+
+  <!-- Stage 1 输出 -->
+  <rect x="645" y="190" width="140" height="60" rx="8" fill="#c5e3e3" stroke="#1b7a7a" stroke-width="2" filter="url(#soft-shadow)"/>
+  <text x="715" y="215" font-size="11" font-weight="bold" fill="#1b7a7a" text-anchor="middle">Output</text>
+  <text x="715" y="238" font-size="16" font-weight="bold" fill="#1b7a7a" text-anchor="middle">10³ ~ 10⁵</text>
+
+  <!-- 漏斗收缩区 1 -->
+  <polygon points="430,325 630,325 598,355 462,355" fill="url(#neck1-grad)" stroke="#1b7a7a" stroke-width="1.5"/>
+
+  <!-- Stage 2: PyRosetta -->
+  <polygon points="462,355 598,355 568,480 492,480" fill="url(#funnel2-grad)" stroke="#2c5f8a" stroke-width="2.5" filter="url(#card-shadow)"/>
+  <text x="530" y="388" font-size="13" font-weight="bold" fill="#2c5f8a" text-anchor="middle">Stage 2 | PyRosetta Analysis</text>
+
+  <!-- Stage 2 步骤 -->
+  <rect x="478" y="408" width="210" height="30" rx="5" fill="#ffffff" stroke="#2c5f8a" stroke-width="1.5" filter="url(#soft-shadow)"/>
+  <use href="#icon-relax" x="484" y="411"/>
+  <text x="583" y="428" font-size="9" font-weight="bold" fill="#2c5f8a" text-anchor="middle">FastRelax (Optional)</text>
+
+  <rect x="478" y="444" width="210" height="30" rx="5" fill="#ffffff" stroke="#2c5f8a" stroke-width="1.5" filter="url(#soft-shadow)"/>
+  <use href="#icon-ppi" x="484" y="447"/>
+  <text x="583" y="464" font-size="9" font-weight="bold" fill="#2c5f8a" text-anchor="middle">Interface Analysis (ΔG, dSASA)</text>
+
+  <!-- Stage 2 输出 -->
+  <rect x="610" y="378" width="115" height="50" rx="8" fill="#c9d8eb" stroke="#2c5f8a" stroke-width="2" filter="url(#soft-shadow)"/>
+  <text x="667" y="400" font-size="10" font-weight="bold" fill="#2c5f8a" text-anchor="middle">Output</text>
+  <text x="667" y="420" font-size="14" font-weight="bold" fill="#2c5f8a" text-anchor="middle">10² ~ 10³</text>
+
+  <!-- 漏斗收缩区 2 -->
+  <polygon points="492,480 568,480 552,505 508,505" fill="url(#neck2-grad)" stroke="#2c5f8a" stroke-width="1.5"/>
+
+  <!-- Stage 3: MD & MM/GBSA -->
+  <polygon points="508,505 552,505 538,615 522,615" fill="url(#funnel3-grad)" stroke="#6b4c7a" stroke-width="2.5" filter="url(#card-shadow)"/>
+  <text x="530" y="535" font-size="12" font-weight="bold" fill="#6b4c7a" text-anchor="middle">Stage 3 | MD &amp; MM/GBSA</text>
+
+  <!-- Stage 3 步骤 -->
+  <rect x="518" y="552" width="135" height="26" rx="4" fill="#ffffff" stroke="#6b4c7a" stroke-width="1.5" filter="url(#soft-shadow)"/>
+  <use href="#icon-md" x="522" y="554"/>
+  <text x="585" y="570" font-size="8" font-weight="bold" fill="#6b4c7a" text-anchor="middle">AMBER MD (ff19SB)</text>
+
+  <rect x="518" y="582" width="135" height="26" rx="4" fill="#ffffff" stroke="#6b4c7a" stroke-width="1.5" filter="url(#soft-shadow)"/>
+  <use href="#icon-rmsd" x="522" y="584"/>
+  <text x="585" y="600" font-size="8" font-weight="bold" fill="#6b4c7a" text-anchor="middle">RMSD/RMSF Analysis</text>
+
+  <!-- Stage 3 输出 -->
+  <rect x="555" y="530" width="100" height="45" rx="6" fill="#e0d8ec" stroke="#6b4c7a" stroke-width="2" filter="url(#soft-shadow)"/>
+  <text x="605" y="548" font-size="9" font-weight="bold" fill="#6b4c7a" text-anchor="middle">Output</text>
+  <text x="605" y="566" font-size="13" font-weight="bold" fill="#6b4c7a" text-anchor="middle">10 ~ 10²</text>
+
+  <!-- 漏斗到Final的连接 -->
+  <polygon points="522,615 538,615 533,638 527,638" fill="#e0d8ec" stroke="#6b4c7a" stroke-width="1.5"/>
+  <line x1="530" y1="638" x2="530" y2="665" stroke="#b87a2e" stroke-width="2.5" marker-end="url(#arrow-gold)"/>
+
+  <!-- ========== FINAL ========== -->
+  <rect x="410" y="670" width="240" height="65" rx="12" fill="#fdf3e8" stroke="#b87a2e" stroke-width="2.5" filter="url(#card-shadow)"/>
+  <use href="#icon-star" x="430" y="682"/>
+  <text x="530" y="702" font-size="15" font-weight="bold" fill="#b87a2e" text-anchor="middle">Final Candidates</text>
+  <text x="530" y="722" font-size="11" fill="#7d6020" text-anchor="middle">5 ~ 30 top-ranked designs</text>
+
+  <!-- ========== 底部详细说明面板 ========== -->
+  <rect x="30" y="760" width="940" height="305" rx="12" fill="#f9f9f9" stroke="#e0e0e0" stroke-width="1.5" filter="url(#card-shadow)"/>
+  <text x="500" y="790" font-size="14" font-weight="bold" fill="#2c3e50" text-anchor="middle">Detailed Workflow &amp; Parameters</text>
+
+  <!-- Part 0 详细卡片 -->
+  <rect x="50" y="810" width="215" height="115" rx="8" fill="#ffffff" stroke="#27ae60" stroke-width="2" filter="url(#soft-shadow)"/>
+  <text x="157" y="835" font-size="11" font-weight="bold" fill="#27ae60" text-anchor="middle">Part 0: Sequence Library</text>
+  <text x="65" y="858" font-size="9" fill="#555555">• PLM: ESM2 embeddings</text>
+  <text x="65" y="874" font-size="9" fill="#555555">• MPNN: ProteinMPNN design</text>
+  <text x="65" y="890" font-size="9" fill="#555555">• Diffusion: RFdiffusion/Chroma</text>
+  <text x="157" y="915" font-size="10" font-weight="bold" fill="#27ae60" text-anchor="middle">→ 10³ ~ 10⁵ variants</text>
+
+  <!-- Stage 1 详细卡片 -->
+  <rect x="280" y="810" width="215" height="115" rx="8" fill="#ffffff" stroke="#1b7a7a" stroke-width="2" filter="url(#soft-shadow)"/>
+  <text x="387" y="835" font-size="11" font-weight="bold" fill="#1b7a7a" text-anchor="middle">Stage 1: AF3 Confidence</text>
+  <text x="295" y="858" font-size="9" fill="#555555">• pLDDT > 70 (core), > 50 (loop)</text>
+  <text x="295" y="874" font-size="9" fill="#555555">• Clash detection (Vina)</text>
+  <text x="295" y="890" font-size="9" fill="#555555">• TM-score clustering (0.8)</text>
+  <text x="387" y="915" font-size="10" font-weight="bold" fill="#1b7a7a" text-anchor="middle">→ 10² ~ 10³ structures</text>
+
+  <!-- Stage 2 详细卡片 -->
+  <rect x="510" y="810" width="215" height="115" rx="8" fill="#ffffff" stroke="#2c5f8a" stroke-width="2" filter="url(#soft-shadow)"/>
+  <text x="617" y="835" font-size="11" font-weight="bold" fill="#2c5f8a" text-anchor="middle">Stage 2: PyRosetta</text>
+  <text x="525" y="858" font-size="9" fill="#555555">• Interface ΔG, dSASA, Packstat</text>
+  <text x="525" y="874" font-size="9" fill="#555555">• SAP score, Rosetta scoring</text>
+  <text x="525" y="890" font-size="9" fill="#555555">• External: germline, pDockQ2</text>
+  <text x="617" y="915" font-size="10" font-weight="bold" fill="#2c5f8a" text-anchor="middle">→ 10 ~ 10² candidates</text>
+
+  <!-- Stage 3 详细卡片 -->
+  <rect x="740" y="810" width="215" height="115" rx="8" fill="#ffffff" stroke="#6b4c7a" stroke-width="2" filter="url(#soft-shadow)"/>
+  <text x="847" y="835" font-size="11" font-weight="bold" fill="#6b4c7a" text-anchor="middle">Stage 3: MD &amp; MM/GBSA</text>
+  <text x="755" y="858" font-size="9" fill="#555555">• AMBER ff19SB, GPU accel.</text>
+  <text x="755" y="874" font-size="9" fill="#555555">• RMSD &lt; 2Å, RMSF stability</text>
+  <text x="755" y="890" font-size="9" fill="#555555">• MM/GBSA ΔG_bind (PB/GB)</text>
+  <text x="847" y="915" font-size="10" font-weight="bold" fill="#6b4c7a" text-anchor="middle">→ 5 ~ 30 finals</text>
+
+  <!-- 卡片间连接线 -->
+  <path d="M 265,867 L 280,867" stroke="#bdc3c7" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 495,867 L 510,867" stroke="#bdc3c7" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 725,867 L 740,867" stroke="#bdc3c7" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ========== 实验验证面板 ========== -->
+  <rect x="300" y="945" width="400" height="110" rx="10" fill="#fffdf5" stroke="#b87a2e" stroke-width="2" filter="url(#card-shadow)"/>
+  <text x="500" y="973" font-size="12" font-weight="bold" fill="#b87a2e" text-anchor="middle">Experimental Validation Pipeline</text>
+  <text x="500" y="998" font-size="9" fill="#555555" text-anchor="middle">• Expression &amp; purification (E. coli / HEK293)</text>
+  <text x="500" y="1014" font-size="9" fill="#555555" text-anchor="middle">• SPR/BLI binding assay (kinetics)</text>
+  <text x="500" y="1030" font-size="9" fill="#555555" text-anchor="middle">• ELISA / FACS functionality screen</text>
+  <text x="500" y="1048" font-size="10" font-weight="bold" fill="#b87a2e" text-anchor="middle">→ Lead Candidates for Development</text>
+</svg>

@@ -1,0 +1,11 @@
+source leaprc.protein.ff14SB
+source leaprc.water.tip3p
+COM = loadpdb 2d4d2_sh3_prepared.pdb
+solvateoct COM TIP3PBOX 8.0
+charge COM
+addions2 COM Na+ 0
+addions2 COM Cl- 0
+saveAmberParm COM system.prmtop system.inpcrd
+savepdb COM system.pdb
+quit
+

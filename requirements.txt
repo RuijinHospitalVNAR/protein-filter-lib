@@ -1,0 +1,18 @@
+# 核心依赖（与 AF3 环境兼容）
+# 注意：numpy 和 scipy 通常在 AF3 环境中已安装，这里列出是为了文档说明
+numpy>=1.20.0,<3.0.0  # AF3 通常使用 numpy 1.x 或 2.x（AF3 环境通常已有）
+scipy>=1.7.0           # AF3 环境通常已有
+
+# 必需依赖（AF3 环境中通常没有，需要安装）
+biopython>=1.79        # 用于结构解析（pDockQ2 和 LIS 的 BioPython 方法需要）
+pandas>=1.3.0          # 用于数据处理（pDockQ2 和 LIS 需要）
+
+# 聚类分析依赖（用于stage1聚类筛选功能）
+scikit-learn>=0.24.0   # 用于聚类分析（KMeans, DBSCAN等）
+hdbscan>=0.8.27        # 用于HDBSCAN聚类（如果缺失，可以使用kmeans或dbscan替代）
+matplotlib>=3.3.0      # 用于可视化（可选，如果缺失聚类仍可工作）
+psutil>=5.8.0          # 用于系统监控（可选）
+
+# 可选依赖（用于性能优化，如果安装失败可以跳过）
+# mdtraj>=1.9.0  # 用于 pDockQ2/LIS 的加速计算（如果缺失，会使用 BioPython 替代方法）
+

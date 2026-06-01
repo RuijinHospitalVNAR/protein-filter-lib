@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1040" font-family="Arial, Helvetica, sans-serif">
+  <!-- 背景 -->
+  <rect width="720" height="1040" fill="#ffffff"/>
+
+  <!-- ==================== 标题 ==================== -->
+  <text x="360" y="40" font-size="20" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Protein Filter Library Pipeline</text>
+  <text x="360" y="62" font-size="11" fill="#666666" text-anchor="middle">Three-tier filtering for AI-aided protein design</text>
+
+  <!-- ==================== 图标定义 ==================== -->
+  <defs>
+    <!-- 蛋白质结构图标 -->
+    <g id="icon-protein">
+      <path d="M 5,15 Q 12,5 20,12 Q 28,18 35,8" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 8,22 Q 15,12 25,20 Q 32,25 38,15" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="12" cy="10" r="3" fill="#e74c3c"/>
+      <circle cx="28" cy="14" r="3" fill="#3498db"/>
+      <circle cx="20" cy="22" r="3" fill="#2ecc71"/>
+      <circle cx="35" cy="10" r="3" fill="#f39c12"/>
+    </g>
+
+    <!-- 漏斗筛选图标 -->
+    <g id="icon-filter">
+      <polygon points="8,5 32,5 22,20 18,20" fill="#1b7a7a" opacity="0.3" stroke="#1b7a7a" stroke-width="1.5"/>
+      <line x1="18" y1="20" x2="18" y2="28" stroke="#1b7a7a" stroke-width="2"/>
+      <line x1="14" y1="28" x2="22" y2="28" stroke="#1b7a7a" stroke-width="2"/>
+    </g>
+
+    <!-- 聚类图标 (多个圆点) -->
+    <g id="icon-cluster">
+      <circle cx="10" cy="12" r="5" fill="#1b7a7a" opacity="0.4" stroke="#1b7a7a" stroke-width="1"/>
+      <circle cx="22" cy="8" r="5" fill="#1b7a7a" opacity="0.6" stroke="#1b7a7a" stroke-width="1"/>
+      <circle cx="30" cy="16" r="5" fill="#1b7a7a" opacity="0.3" stroke="#1b7a7a" stroke-width="1"/>
+      <circle cx="18" cy="22" r="5" fill="#1b7a7a" opacity="0.5" stroke="#1b7a7a" stroke-width="1"/>
+    </g>
+
+    <!-- 界面接触图标 -->
+    <g id="icon-interface">
+      <ellipse cx="12" cy="15" rx="10" ry="12" fill="#1b7a7a" opacity="0.2" stroke="#1b7a7a" stroke-width="1"/>
+      <ellipse cx="28" cy="15" rx="10" ry="12" fill="#1b7a7a" opacity="0.2" stroke="#1b7a7a" stroke-width="1"/>
+      <circle cx="20" cy="15" r="3" fill="#e74c3c"/>
+      <circle cx="20" cy="10" r="2" fill="#3498db"/>
+      <circle cx="20" cy="20" r="2" fill="#f39c12"/>
+    </g>
+
+    <!-- 松弛/弹簧图标 -->
+    <g id="icon-relax">
+      <path d="M 5,15 Q 10,10 15,15 Q 20,20 25,15 Q 30,10 35,15" fill="none" stroke="#2c5f8a" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 5,20 Q 10,15 15,20 Q 20,25 25,20 Q 30,15 35,20" fill="none" stroke="#2c5f8a" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+    </g>
+
+    <!-- 蛋白质-蛋白质界面分析 -->
+    <g id="icon-ppi">
+      <path d="M 5,8 Q 15,5 20,15 Q 25,25 35,22" fill="none" stroke="#2c5f8a" stroke-width="2"/>
+      <path d="M 5,22 Q 15,25 20,15 Q 25,5 35,8" fill="none" stroke="#2c5f8a" stroke-width="2"/>
+      <circle cx="20" cy="15" r="4" fill="#e74c3c" opacity="0.8"/>
+    </g>
+
+    <!-- 齿轮/工具图标 -->
+    <g id="icon-tools">
+      <circle cx="20" cy="15" r="10" fill="none" stroke="#2c5f8a" stroke-width="2"/>
+      <circle cx="20" cy="15" r="4" fill="#2c5f8a" opacity="0.3"/>
+      <line x1="20" y1="2" x2="20" y2="6" stroke="#2c5f8a" stroke-width="2"/>
+      <line x1="20" y1="24" x2="20" y2="28" stroke="#2c5f8a" stroke-width="2"/>
+      <line x1="7" y1="15" x2="11" y2="15" stroke="#2c5f8a" stroke-width="2"/>
+      <line x1="29" y1="15" x2="33" y2="15" stroke="#2c5f8a" stroke-width="2"/>
+    </g>
+
+    <!-- MD运动轨迹 -->
+    <g id="icon-md">
+      <path d="M 5,10 Q 12,5 18,12 Q 24,18 30,10 Q 36,5 38,15" fill="none" stroke="#6b4c7a" stroke-width="1.5" stroke-dasharray="2,2"/>
+      <path d="M 5,18 Q 12,13 18,20 Q 24,26 30,18 Q 36,13 38,23" fill="none" stroke="#6b4c7a" stroke-width="1.5" stroke-dasharray="2,2" opacity="0.5"/>
+      <circle cx="20" cy="15" r="5" fill="#6b4c7a" opacity="0.2" stroke="#6b4c7a" stroke-width="1.5"/>
+    </g>
+
+    <!-- RMSD波动曲线 -->
+    <g id="icon-rmsd">
+      <rect x="4" y="4" width="32" height="22" fill="none" stroke="#6b4c7a" stroke-width="1"/>
+      <line x1="4" y1="20" x2="8" y2="18" stroke="#6b4c7a" stroke-width="1.5"/>
+      <line x1="8" y1="18" x2="14" y2="22" stroke="#6b4c7a" stroke-width="1.5"/>
+      <line x1="14" y1="22" x2="20" y2="16" stroke="#6b4c7a" stroke-width="1.5"/>
+      <line x1="20" y1="16" x2="26" y2="19" stroke="#6b4c7a" stroke-width="1.5"/>
+      <line x1="26" y1="19" x2="36" y2="14" stroke="#6b4c7a" stroke-width="1.5"/>
+    </g>
+
+    <!-- 能量曲线 -->
+    <g id="icon-energy">
+      <rect x="4" y="4" width="32" height="22" fill="none" stroke="#6b4c7a" stroke-width="1"/>
+      <path d="M 6,22 Q 14,20 18,12 Q 22,6 30,8" fill="none" stroke="#e74c3c" stroke-width="2"/>
+      <circle cx="30" cy="8" r="2.5" fill="#e74c3c"/>
+    </g>
+
+    <!-- 奖杯/星标 -->
+    <g id="icon-star">
+      <polygon points="20,2 24,14 36,14 26,22 30,34 20,26 10,34 14,22 4,14 16,14" fill="#b87a2e" opacity="0.2" stroke="#b87a2e" stroke-width="1.5"/>
+    </g>
+
+    <!-- 箭头标记 -->
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#000000"/>
+    </marker>
+  </defs>
+
+  <!-- ==================== INPUT ==================== -->
+  <rect x="180" y="85" width="360" height="65" rx="8" fill="#f8f9fa" stroke="#495057" stroke-width="2"/>
+  <use href="#icon-protein" x="200" y="92"/>
+  <text x="360" y="115" font-size="13" font-weight="bold" fill="#333333" text-anchor="middle">AlphaFold3 Predicted Structures</text>
+  <text x="360" y="135" font-size="10" fill="#666666" text-anchor="middle">.pdb + .json  (auto-extract pLDDT / PTM / iPTM / PAE)</text>
+
+  <!-- 箭头1 -->
+  <line x1="360" y1="152" x2="360" y2="168" stroke="#000000" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ==================== PART 1 ==================== -->
+  <rect x="80" y="175" width="560" height="245" rx="10" fill="#e8f4f4" stroke="#1b7a7a" stroke-width="2.5" opacity="0.9"/>
+  <text x="360" y="200" font-size="15" font-weight="bold" fill="#1b7a7a" text-anchor="middle">Part 1  |  AF3 Confidence &amp; Clustering</text>
+
+  <!-- Step 1 -->
+  <rect x="120" y="215" width="480" height="55" rx="6" fill="#ffffff" stroke="#1b7a7a" stroke-width="1.5"/>
+  <use href="#icon-filter" x="135" y="225"/>
+  <text x="360" y="240" font-size="12" font-weight="bold" fill="#1b7a7a" text-anchor="middle">Scoring Filter</text>
+  <text x="360" y="258" font-size="10" fill="#444444" text-anchor="middle">pLDDT cutoff, clash detection</text>
+
+  <!-- Step 2 -->
+  <rect x="120" y="280" width="480" height="55" rx="6" fill="#ffffff" stroke="#1b7a7a" stroke-width="1.5"/>
+  <use href="#icon-cluster" x="135" y="290"/>
+  <text x="360" y="305" font-size="12" font-weight="bold" fill="#1b7a7a" text-anchor="middle">Foldseek Clustering</text>
+  <text x="360" y="323" font-size="10" fill="#444444" text-anchor="middle">Structure similarity &amp; TM-score</text>
+
+  <!-- Step 3 -->
+  <rect x="120" y="345" width="480" height="55" rx="6" fill="#ffffff" stroke="#1b7a7a" stroke-width="1.5"/>
+  <use href="#icon-interface" x="135" y="355"/>
+  <text x="360" y="370" font-size="12" font-weight="bold" fill="#1b7a7a" text-anchor="middle">H-A Interface Clustering</text>
+  <text x="360" y="388" font-size="10" fill="#444444" text-anchor="middle">Antigen-Antibody contact analysis</text>
+
+  <!-- Output -->
+  <rect x="220" y="410" width="280" height="32" rx="5" fill="#c5e3e3" stroke="#1b7a7a" stroke-width="1.5"/>
+  <text x="360" y="431" font-size="11" font-weight="bold" fill="#1b7a7a" text-anchor="middle">stage1_passed.parquet</text>
+
+  <!-- 箭头2 -->
+  <line x1="360" y1="443" x2="360" y2="459" stroke="#000000" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ==================== PART 2 ==================== -->
+  <rect x="80" y="465" width="560" height="245" rx="10" fill="#eef2f8" stroke="#2c5f8a" stroke-width="2.5" opacity="0.9"/>
+  <text x="360" y="490" font-size="15" font-weight="bold" fill="#2c5f8a" text-anchor="middle">Part 2  |  PyRosetta Static Analysis</text>
+
+  <!-- Step 1 -->
+  <rect x="120" y="505" width="480" height="55" rx="6" fill="#ffffff" stroke="#2c5f8a" stroke-width="1.5"/>
+  <use href="#icon-relax" x="135" y="515"/>
+  <text x="360" y="530" font-size="12" font-weight="bold" fill="#2c5f8a" text-anchor="middle">Structure Relax (Optional)</text>
+  <text x="360" y="548" font-size="10" fill="#444444" text-anchor="middle">FastRelax energy minimization</text>
+
+  <!-- Step 2 -->
+  <rect x="120" y="570" width="480" height="55" rx="6" fill="#ffffff" stroke="#2c5f8a" stroke-width="1.5"/>
+  <use href="#icon-ppi" x="135" y="580"/>
+  <text x="360" y="595" font-size="12" font-weight="bold" fill="#2c5f8a" text-anchor="middle">Interface Analysis</text>
+  <text x="360" y="613" font-size="10" fill="#444444" text-anchor="middle">interface_dG, dSASA, packstat, SAP</text>
+
+  <!-- Step 3 -->
+  <rect x="120" y="635" width="480" height="55" rx="6" fill="#ffffff" stroke="#2c5f8a" stroke-width="1.5"/>
+  <use href="#icon-tools" x="135" y="645"/>
+  <text x="360" y="660" font-size="12" font-weight="bold" fill="#2c5f8a" text-anchor="middle">External Tools Integration</text>
+  <text x="360" y="678" font-size="10" fill="#444444" text-anchor="middle">germinal, PPIFlow, pDockQ2</text>
+
+  <!-- Output -->
+  <rect x="220" y="700" width="280" height="32" rx="5" fill="#c9d8eb" stroke="#2c5f8a" stroke-width="1.5"/>
+  <text x="360" y="721" font-size="11" font-weight="bold" fill="#2c5f8a" text-anchor="middle">stage2_passed.parquet</text>
+
+  <!-- 箭头3 -->
+  <line x1="360" y1="733" x2="360" y2="749" stroke="#000000" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ==================== PART 3 ==================== -->
+  <rect x="80" y="755" width="560" height="245" rx="10" fill="#f3eef6" stroke="#6b4c7a" stroke-width="2.5" opacity="0.9"/>
+  <text x="360" y="780" font-size="15" font-weight="bold" fill="#6b4c7a" text-anchor="middle">Part 3  |  MD Simulation &amp; MM/GBSA</text>
+
+  <!-- Step 1 -->
+  <rect x="120" y="795" width="480" height="55" rx="6" fill="#ffffff" stroke="#6b4c7a" stroke-width="1.5"/>
+  <use href="#icon-md" x="135" y="805"/>
+  <text x="360" y="820" font-size="12" font-weight="bold" fill="#6b4c7a" text-anchor="middle">AMBER MD Simulation</text>
+  <text x="360" y="838" font-size="10" fill="#444444" text-anchor="middle">ff19SB force field, GPU-accelerated</text>
+
+  <!-- Step 2 -->
+  <rect x="120" y="860" width="480" height="55" rx="6" fill="#ffffff" stroke="#6b4c7a" stroke-width="1.5"/>
+  <use href="#icon-rmsd" x="135" y="870"/>
+  <text x="360" y="885" font-size="12" font-weight="bold" fill="#6b4c7a" text-anchor="middle">RMSD / RMSF Analysis</text>
+  <text x="360" y="903" font-size="10" fill="#444444" text-anchor="middle">Structural stability assessment</text>
+
+  <!-- Step 3 -->
+  <rect x="120" y="925" width="480" height="55" rx="6" fill="#ffffff" stroke="#6b4c7a" stroke-width="1.5"/>
+  <use href="#icon-energy" x="135" y="935"/>
+  <text x="360" y="950" font-size="12" font-weight="bold" fill="#6b4c7a" text-anchor="middle">MM/GBSA Binding Free Energy</text>
+  <text x="360" y="968" font-size="10" fill="#444444" text-anchor="middle">&#916;G_bind with PB/GB solvation model</text>
+
+  <!-- ==================== FINAL ==================== -->
+  <rect x="240" y="990" width="240" height="40" rx="8" fill="#fdf3e8" stroke="#b87a2e" stroke-width="2"/>
+  <use href="#icon-star" x="255" y="993"/>
+  <text x="380" y="1010" font-size="13" font-weight="bold" fill="#b87a2e" text-anchor="middle">Final Candidates</text>
+  <text x="380" y="1025" font-size="10" fill="#666666" text-anchor="middle">Top-ranked designs</text>
+</svg>

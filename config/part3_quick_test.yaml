@@ -1,0 +1,35 @@
+# 快速测试配置 (1ns)
+# 用于验证优化后的代码能否正常运行
+
+input:
+  csv: "/data/wcf/protein_filter_lib/examples/benchmark_100ns_run/part3_input_82.csv"
+  top_n: 1
+
+chains:
+  target_chain: "A"
+  binder_chain: "B"
+
+physics:
+  temperature: 298.15
+  ph: 7.4
+  ion_concentration: 0.154
+
+md:
+  production_ns: 1
+  npt_ns: 1
+  interval: 5
+
+forcefield: "amber99sb"
+
+resources:
+  n_gpu: 1
+  gpu_ids: [0]
+  ntomp: 6
+
+output:
+  base_dir: ""
+  run_id: ""
+  structure_subdir: true
+
+resume:
+  enabled: false

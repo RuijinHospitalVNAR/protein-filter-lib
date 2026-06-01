@@ -1,0 +1,86 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+.cursor/
+.benchmarks/
+*.swp
+*.swo
+*~
+
+# Project specific
+filter_results/
+*.pdb
+*.cif
+*_results.json
+*_summary.json
+*_cache.pkl
+*.log
+af3_data_cache.pkl
+.pyrosetta_path
+
+# Temporary files
+*.tmp
+*.temp
+/tmp/
+af3_clustering_*/
+
+# Test outputs
+test_outputs/
+test_results/
+
+# Analysis outputs
+*_clustering/
+*_selected_files.txt
+stage1_metrics/
+stage2_metrics/
+stage1_filtered/
+stage2_filtered/
+
+# AMBER MD simulation output files (large binary data, covered by directory rules below)
+
+# Archive directory (historical code and third-party binaries)
+archive/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Version files
+^=.*$
+
+# Project plans (internal docs)
+PROJECT_OPTIMIZATION_PLAN*.md
+CLEANUP_PLAN.md
+
+# Examples data (keep scripts, ignore large data)
+examples/*/part3_amber_out/
+examples/*/part3_test*/
+examples/*/part3_analysis/

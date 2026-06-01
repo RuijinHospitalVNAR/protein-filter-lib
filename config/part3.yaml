@@ -1,0 +1,48 @@
+# Part 3 正式运行默认配置（与 part3_100ns.yaml 保持一致）
+
+input:
+  csv: ""
+  dir: ""
+  top_n: 30
+
+chains:
+  # 手动指定链ID（默认方式，兼容）
+  target_chain: "A"
+  binder_chain: "B"
+
+  # 自动链识别配置（推荐使用，避免链ID不匹配问题）
+  auto_detect:
+    enabled: true  # 设为true启用自动识别
+    # 识别策略：
+    #   - by_length: 按序列长度（抗原通常更长）
+    #   - by_interface: 按蛋白-蛋白接触界面面积
+    strategy: "by_length"  # 默认按长度判断
+    # 可选：提供已知序列进行精确匹配（优先级最高）
+    target_sequence: ""
+    binder_sequence: ""
+
+physics:
+  temperature: 298.15
+  ph: 7.4
+  ion_concentration: 0.154
+
+md:
+  production_ns: 100
+  npt_ns: 1
+  interval: 5
+
+forcefield: "amber99sb"
+
+resources:
+  n_gpu: 8
+  gpu_ids: [0, 1, 2, 3, 4, 5, 6, 7]
+  ntomp: 6
+
+output:
+  base_dir: ""
+  run_id: ""
+  structure_subdir: true
+
+resume:
+  enabled: true
+  rerun_failed: false

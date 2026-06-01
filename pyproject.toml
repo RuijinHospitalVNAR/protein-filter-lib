@@ -1,0 +1,74 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel", "build"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "protein-filter-lib"
+version = "0.1.0"
+description = "Independent protein design filter and quality assessment library"
+readme = "README.md"
+requires-python = ">=3.8"
+license = "Apache-2.0"  # 使用 SPDX 格式（简单字符串）
+authors = [
+    {name = "RuijinHospitalVNAR"},
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    # 注意：License classifier 已弃用，使用上面的 license = "Apache-2.0" 代替
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+dependencies = [
+    "numpy>=1.20.0,<3.0.0",  # 兼容 AF3 环境（AF3 通常使用 numpy 1.x 或 2.x）
+    "scipy>=1.7.0",
+    "biopython>=1.79",
+    "pandas>=1.3.0",
+    "scikit-learn>=0.24.0",  # 用于聚类分析（KMeans, DBSCAN等）
+    # mdtraj 移至 optional-dependencies，因为它在某些环境中可能安装失败
+]
+
+[project.scripts]
+pf-part1-compute-metrics = "protein_filter.cli.part1_compute:main"
+pf-part1-filter = "protein_filter.cli.part1_filter:main"
+pf-part2-compute-metrics = "protein_filter.cli.part2_compute:main"
+pf-part2-filter = "protein_filter.cli.part2_filter:main"
+pf-part3-collect-mmgbsa = "protein_filter.cli.part3_collect_mmgbsa:main"
+
+[project.optional-dependencies]
+full = [
+    "mdtraj>=1.9.0",  # 用于 pDockQ2 和 LIS 计算（如果安装失败，会回退到基础 pDockQ）
+]
+clustering = [
+    "hdbscan>=0.8.27",  # 用于HDBSCAN聚类（如果缺失，可以使用kmeans或dbscan替代）
+    "matplotlib>=3.3.0",  # 用于可视化（可选）
+    "psutil>=5.8.0",  # 用于系统监控（可选）
+]
+dev = [
+    "pytest>=7.0",
+    "black>=22.0",
+    "flake8>=4.0",
+    "mypy>=0.950",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 88
+target-version = ['py38', 'py39', 'py310']
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+

@@ -1,0 +1,26 @@
+part3:
+  chains:
+    target_chain: A
+    binder_chain: B
+    auto_detect:
+      enabled: true
+      strategy: by_length
+
+  mmpbsa:
+    auto_detect: true
+    receptor_residues: "1-81"
+    ligand_residues: "82-139"
+    verbose: true
+    precheck_topology: true
+
+  md:
+    crash_recovery:
+      enabled: true
+      max_attempts: 3
+      auto_adjust_params: true
+    timestep_fs: 2
+    production_ns: 100
+
+output:
+  format: csv
+  save_intermediates: false
